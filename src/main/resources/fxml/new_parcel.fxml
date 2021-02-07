@@ -6,59 +6,129 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.NewParcelController">
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="etxtLogin" maxWidth="-Infinity" prefWidth="190.0" promptText="login">
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="login">
                <VBox.margin>
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
+
             <PasswordField fx:id="etxtPassword" maxWidth="-Infinity" prefWidth="190.0" promptText="hasło">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </PasswordField>
             <TextField fx:id="etxtName" maxWidth="-Infinity" prefWidth="190.0" promptText="Imię adresata">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtSurname" maxWidth="-Infinity" prefWidth="190.0" promptText="Nazwisko adresata">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="Nazwisko adresata">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtPhone" maxWidth="-Infinity" prefWidth="190.0" promptText="Numer telefonu adresata">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="Numer telefonu adresata">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtEmail" maxWidth="-Infinity" prefWidth="190.0" promptText="E-mail adresata">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="E-mail adresata">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtOutbox" maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu nadawczego">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="ID automatu nadawczego">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtInbox" maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu odbiorczego">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="ID automatu odbiorczego">
+
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
-            <TextField fx:id="etxtSize" maxWidth="-Infinity" prefWidth="190.0" promptText="Rozmiar przesyłki">
+
+            <TextField maxWidth="-Infinity" prefWidth="280.0" promptText="Rozmiar przesyłki">
+
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
             </TextField>
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="#a40606" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -66,20 +136,35 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Text>
-            <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#addParcel" prefWidth="190.0" text="Nadaj przesyłkę">
+
+            <Button maxWidth="-Infinity" mnemonicParsing="false" prefWidth="280.0" style="-fx-background-color: #000000;" text="Nadaj przesyłkę" textFill="#9fa8da">
+
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
-            <Button fx:id="btnBack" maxWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="190.0" text="Powrót">
+            <Button fx:id="btnBack" maxWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
    </left>
    <center>
+
       <TableView fx:id="tbParcelLocker" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="tbRowID" prefWidth="100.0" text="ID automatu">
@@ -92,6 +177,7 @@
                 <PropertyValueFactory property="address" />
              </cellValueFactory>
           </TableColumn>
+
         </columns>
       </TableView>
    </center>

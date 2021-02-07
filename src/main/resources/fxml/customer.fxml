@@ -7,43 +7,86 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.CustomerController">
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.CustomerController">
+
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="130.0" BorderPane.alignment="TOP_CENTER">
+      <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER">
          <children>
 
-            <TextField fx:id="etxtLogin" maxWidth="-Infinity" prefWidth="120.0" promptText="login">
+            <TextField fx:id="etxtLogin" prefWidth="180.0" promptText="login">
                <VBox.margin>
-                  <Insets bottom="5.0" top="10.0" />
-               </VBox.margin></TextField>
-            <PasswordField fx:id="etxtPassword" maxWidth="-Infinity" prefWidth="120.0" promptText="hasło" />
-            <Text fx:id="txtMessage" fill="#a40606" strokeType="OUTSIDE" strokeWidth="0.0">
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
                <font>
-                  <Font size="9.0" />
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
+            <PasswordField fx:id="etxtPassword" prefWidth="180.0" promptText="hasło">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></PasswordField>
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Candara" size="9.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin></Text>
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="120.0" text="Zaloguj">
+            <Button fx:id="btnLogin" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Zaloguj" textFill="#9fa8da">
                <VBox.margin>
                   <Insets bottom="10.0" />
-               </VBox.margin></Button>
-            <Button fx:id="btnAddParcel" disable="true" mnemonicParsing="false" onAction="#addParcel" prefHeight="27.0" prefWidth="120.0" text="Nadaj przesyłkę" />
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="120.0" text="Powrót">
-               <VBox.margin>
-                  <Insets top="140.0" />
-               </VBox.margin></Button>
-            <Button fx:id="btnLogout" disable="true" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="120.0" text="Wyloguj">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Button fx:id="btnAddParcel" disable="true" mnemonicParsing="false" onAction="#addParcel" prefHeight="27.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Nadaj przesyłkę" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets top="440.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Button fx:id="btnLogout" disable="true" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Wyloguj" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
@@ -52,7 +95,6 @@
    <center>
       <TableView fx:id="tbParcel" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-
           <TableColumn fx:id="tbRowID" prefWidth="104.00000154972076" text="ID" >
              <cellValueFactory>
                 <PropertyValueFactory property="parcelId" />
@@ -74,13 +116,19 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="26.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="etxtSearch" disable="true" onAction="#search" prefHeight="26.0" prefWidth="450.0" promptText="Wyszukaj">
+            <TextField fx:id="etxtSearch" disable="true" onAction="#search" prefHeight="39.0" prefWidth="707.0" promptText="Wyszukaj">
                <HBox.margin>
-                  <Insets bottom="10.0" />
-               </HBox.margin></TextField>
-            <ChoiceBox fx:id="spSearch" prefWidth="140.0">
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
+            <ChoiceBox fx:id="spSearch" prefHeight="35.0" prefWidth="272.0" style="-fx-background-color: #c5cae9;">
                <HBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" top="9.0" />
                </HBox.margin></ChoiceBox>
          </children>
       </HBox>
