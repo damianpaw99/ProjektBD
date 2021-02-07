@@ -4,58 +4,97 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.NewCustomerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.NewCustomerController">
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="251.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="etxtName" maxWidth="-Infinity" prefWidth="554.0" promptText="Imię">
                <VBox.margin>
                   <Insets top="20.0" />
-               </VBox.margin></TextField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
             <TextField fx:id="etxtSurname" maxWidth="-Infinity" prefWidth="554.0" promptText="Nazwisko">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></TextField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
             <TextField fx:id="etxtEmail" maxWidth="-Infinity" prefWidth="554.0" promptText="Email">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></TextField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
             <TextField fx:id="etxtPhone" maxWidth="-Infinity" prefWidth="554.0" promptText="Nr telefonu">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></TextField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
             <TextField fx:id="etxtLogin" maxWidth="-Infinity" prefWidth="554.0" promptText="Login">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></TextField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></TextField>
             <PasswordField fx:id="etxtPassword" maxWidth="-Infinity" prefWidth="554.0" promptText="Hasło">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></PasswordField>
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></PasswordField>
             <PasswordField fx:id="etxtRepeatPassword" maxWidth="-Infinity" prefWidth="554.0" promptText="Powtórz hasło">
                <VBox.margin>
                   <Insets top="5.0" />
-               </VBox.margin></PasswordField>
-            <Text fx:id="txtMessage" fill="#a40606" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </VBox.margin>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect></PasswordField>
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font></Text>
          </children>
       </VBox>
    </center>
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="145.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAddClient" mnemonicParsing="false" onAction="#addClient" prefWidth="554.0" text="Utwórz konto">
+            <Button fx:id="btnAddClient" mnemonicParsing="false" onAction="#addClient" prefWidth="554.0" style="-fx-background-color: #000000;" text="Utwórz konto" textFill="#9fa8da">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="23.0" text="Powrót">
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="23.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
                   <Insets right="500.0" top="75.0" />
                </VBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
