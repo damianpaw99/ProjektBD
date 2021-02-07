@@ -41,7 +41,7 @@
                   <Insets top="245.0" />
                </VBox.margin>
             </Button>
-            <Button disable="true" mnemonicParsing="false" onAction="#logout" prefHeight="21.0" prefWidth="120.0" text="Wyloguj">
+            <Button fx:id="btnLogout" disable="true" mnemonicParsing="false" onAction="#logout" prefHeight="21.0" prefWidth="120.0" text="Wyloguj">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin></Button>
@@ -49,7 +49,7 @@
       </VBox>
    </left>
    <right>
-      <VBox alignment="TOP_CENTER" prefHeight="382.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="439.0" prefWidth="178.0" BorderPane.alignment="CENTER">
          <children>
             <TextField fx:id="etxtParcelId" disable="true" maxWidth="-Infinity" onAction="#toggleButtons" prefWidth="170.0" promptText="ID paczki">
                <VBox.margin>
@@ -68,10 +68,12 @@
       </VBox>
    </right>
    <center>
-      <TableView fx:id="tbParcel" disable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbParcel" prefHeight="439.0" prefWidth="400.0" BorderPane.alignment="TOP_CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="tbRowID" editable="false" prefWidth="75.0" text="ID przesyłki" />
+          <TableColumn fx:id="tbRowStatus" prefWidth="75.0" text="Status" />
+            <TableColumn fx:id="tbRowOutboxAddress" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="120.0" text="Automat nadawczy" />
+            <TableColumn fx:id="tbRowInboxAddress" prefWidth="120.0" text="Automat odbiorczy" />
         </columns>
       </TableView>
    </center>

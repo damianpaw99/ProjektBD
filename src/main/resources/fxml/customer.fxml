@@ -52,6 +52,7 @@
    <center>
       <TableView fx:id="tbParcel" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
+
           <TableColumn fx:id="tbRowID" prefWidth="104.00000154972076" text="ID" >
              <cellValueFactory>
                 <PropertyValueFactory property="parcelId" />
