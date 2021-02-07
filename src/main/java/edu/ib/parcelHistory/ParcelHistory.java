@@ -6,18 +6,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ParcelHistory {
-
-    private StringProperty date;
     private IntegerProperty parcelId;
+    private StringProperty date;
     private StringProperty state;
-    private IntegerProperty code;
 
 
     public ParcelHistory(){
         date =new SimpleStringProperty();
         parcelId=new SimpleIntegerProperty();
         state=new SimpleStringProperty();
-        code=new SimpleIntegerProperty();
     }
 
     public String getDate() {
@@ -54,17 +51,5 @@ public class ParcelHistory {
 
     public void setState(String state) {
         this.state.set(state);
-    }
-
-    public int getCode() {
-        return code.get();
-    }
-
-    public IntegerProperty codeProperty() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code.set(code);
     }
 }

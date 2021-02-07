@@ -55,7 +55,7 @@ public class CustomerController {
     private TableView tbParcel;
 
     @FXML
-    private TableColumn<ParcelHistory, Integer> tbRowID;
+    private TableColumn<ParcelHistory, String> tbRowID;
 
     @FXML
     private TableColumn<ParcelHistory, String> tbRowDate;
@@ -86,7 +86,7 @@ public class CustomerController {
     }
 
     @FXML
-    void backAction(ActionEvent event) {
+    void back(ActionEvent event) {
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             Parent root=FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
@@ -154,7 +154,7 @@ public class CustomerController {
         etxtLogin.setDisable(true);
         etxtPassword.setDisable(true);
         btnLogin.setDisable(true);
-        btnAddParcel.setDisable(true);
+        btnAddParcel.setDisable(false);
         txtMessage.setText("");
     }
 
@@ -167,7 +167,7 @@ public class CustomerController {
         etxtPassword.setDisable(false);
         etxtLogin.setDisable(false);
         btnLogin.setDisable(false);
-        btnAddParcel.setDisable(false);
+        btnAddParcel.setDisable(true);
         etxtPassword.setText("");
         etxtLogin.setText("");
         tbParcel.getItems().clear();
