@@ -28,6 +28,7 @@ public class ParcelCourierDAO {
             String outboxAddress=rs.getString("MachineOutboxAddress");
             String inboxAddress=rs.getString("MachineInboxAddress");
             String state=rs.getString("Status");
+            String date=rs.getDate("Date").toString()+" "+rs.getTime("Date").toString();
             String out = switch (state) {
                 case "ready_for_pickup_by_courier" -> "Nadana";
                 case "pickedup_by_courier" -> "Podjęta przez kuriera";
@@ -36,14 +37,17 @@ public class ParcelCourierDAO {
                 case "missed" -> "Nieodebrana";
                 default -> "";
             };
+            parcelCourier.setDate(date);
             parcelCourier.setState(out);
+            parcelCourier.setInboxAddress(inboxAddress);
+            parcelCourier.setOutboxAddress(outboxAddress);
             parcelCourierObservableList.add(parcelCourier);
         }
         return parcelCourierObservableList;
     }
 
     public ObservableList<ParcelCourier> showAllParcels() throws ClassNotFoundException, SQLException, WrongLoginPasswordException {
-        String statement="SELECT ParcelID, Status, MachineOutboxAddress, MachineInboxAddress from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
+        String statement="SELECT ParcelID, Status, MachineOutboxAddress, MachineInboxAddress, Date FROM courier_parcels WHERE CourierLogin=\""+logger.getLogin()+"\"";
 
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);

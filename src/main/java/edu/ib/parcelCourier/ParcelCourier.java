@@ -11,12 +11,26 @@ public class ParcelCourier {
     private StringProperty state;
     private StringProperty outboxAddress;
     private StringProperty inboxAddress;
+    private StringProperty date;
 
     public ParcelCourier() {
         parcelId = new SimpleIntegerProperty();
         state = new SimpleStringProperty();
         outboxAddress = new SimpleStringProperty();
         inboxAddress = new SimpleStringProperty();
+        date=new SimpleStringProperty();
+    }
+
+    public String getDate() {
+        return date.get();
+    }
+
+    public StringProperty dateProperty() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date.set(date);
     }
 
     public int getParcelId() {

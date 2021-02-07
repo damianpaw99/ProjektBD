@@ -29,7 +29,7 @@ public class ParcelHistoryDAO {
         while(rs.next()){
             ParcelHistory parcelHistory=new ParcelHistory();
             parcelHistory.setParcelId(rs.getInt("ParcelID"));
-            parcelHistory.setDate(rs.getDate("Date").toString());
+            parcelHistory.setDate(rs.getDate("Date").toString()+" "+rs.getTime("Date").toString());
             String state=rs.getString("Status");
             String out = switch (state) {
                 case "ready_for_pickup_by_courier" -> "Nadana";
@@ -46,7 +46,7 @@ public class ParcelHistoryDAO {
     }
 
     public ObservableList<ParcelHistory> showAllParcels() throws ClassNotFoundException, SQLException, WrongLoginPasswordException {
-        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
+        String statement="SELECT ParcelID, Date, Status FROM parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
 
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
@@ -68,17 +68,25 @@ public class ParcelHistoryDAO {
             }
             case STATUS -> {
                 type = "Status";
-                value = "\"" + value + "\"";
+                value = switch (value) {
+                    case "Nadana" -> "ready_for_pickup_by_courier";
+                    case "Podjęta przez kuriera"-> "pickedup_by_courier";
+                    case "Gotowa do odbioru"-> "ready_for_pickup_by_addressee";
+                    case "Odebrana"-> "received";
+                    case "Nieodebrana"-> "missed";
+                    default -> "";
+                };
+                value = "\"%" + value + "\"%";
             }
             case DATE -> {
                 type = "Date";
-                value = "\"" + value + "\"";
+                value = "\"%" + value + "%\"";
             }
             default -> throw new IllegalArgumentException();
         }
 
-        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\" AND "+type+"="+value;
-
+        String statement="SELECT ParcelID, Date, Status FROM parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\" AND "+type+" LIKE "+value;
+        System.out.println(statement);
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
 

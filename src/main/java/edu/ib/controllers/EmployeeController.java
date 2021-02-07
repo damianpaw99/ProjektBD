@@ -74,6 +74,9 @@ public class EmployeeController {
     private TableColumn<ParcelCourier, String> tbRowInboxAddress;
 
     @FXML
+    private TableColumn<ParcelCourier, String> tbRowDate;
+
+    @FXML
     private TextField etxtSearch;
 
     private DBUtil dbUtil;
@@ -81,7 +84,7 @@ public class EmployeeController {
 
 
     @FXML
-    void backAction(ActionEvent event) {
+    void back(ActionEvent event) {
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             Parent root= FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
@@ -120,14 +123,14 @@ public class EmployeeController {
     void login(ActionEvent event) {
         Logger logger=new Logger(dbUtil,etxtLogin.getText(),Logger.EMPLOYEE);
         try {
-            logger.logIn(Logger.hash(etxtPassword.getText())); //Logger.hash
+            logger.logIn(etxtPassword.getText()); //Logger.hash
             loginSuccess();
             parcelCourierDAO=new ParcelCourierDAO(dbUtil,logger);
 
         } catch (WrongLoginPasswordException e){
             txtMessage.setText("Niepoprawny login lub hasło!");
             e.printStackTrace();
-        } catch(NoSuchAlgorithmException | SQLException | ClassNotFoundException e){
+        } catch(/*NoSuchAlgorithmException |*/ SQLException | ClassNotFoundException e){
             txtMessage.setText("Nastąpił błąd podczas weryfikacji");
             e.printStackTrace();
         }
@@ -147,6 +150,7 @@ public class EmployeeController {
         etxtPassword.setDisable(true);
         btnLogin.setDisable(true);
         txtMessage.setText("");
+        etxtParcelId.setDisable(false);
     }
 
     @FXML
@@ -166,6 +170,8 @@ public class EmployeeController {
         etxtPassword.setText("");
         etxtLogin.setText("");
         tbParcel.getItems().clear();
+        etxtParcelId.setText("");
+        etxtParcelId.setDisable(true);
     }
 
     @FXML
@@ -216,6 +222,7 @@ public class EmployeeController {
         assert tbRowOutboxAddress != null : "fx:id=\"tbRowOutboxAddress\" was not injected: check your FXML file 'employee.fxml'.";
         assert tbRowInboxAddress != null : "fx:id=\"tbRowInboxAddress\" was not injected: check your FXML file 'employee.fxml'.";
         assert etxtSearch != null : "fx:id=\"etxtSearch\" was not injected: check your FXML file 'employee.fxml'.";
+        assert tbRowDate != null : "fx:id=\"tbRowDate\" was not injected: check your FXML file 'employee.fxml'.";
 
         dbUtil=new DBUtil("employee","emppass321");
     }
