@@ -99,10 +99,10 @@ public class NewCustomerController {
             statement.append(phone);
             statement.append(")");
 
-            dbUtil.dbExecuteQuery(statement.toString());
+            dbUtil.dbExecuteUpdate(statement.toString());
 
             txtMessage.setText("Dodanie konta zakończyło się sukcesem!");
-        }catch(SQLIntegrityConstraintViolationException e){
+        } catch(SQLIntegrityConstraintViolationException e){
             txtMessage.setText("Login +"+etxtLogin.getText()+" jest już zajęty!");
             e.getStackTrace();
         } catch (Exception e) {
