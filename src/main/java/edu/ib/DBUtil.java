@@ -3,8 +3,7 @@ package edu.ib;
 import com.github.vldrus.sql.rowset.CachedRowSetWrapper;
 import javafx.scene.control.TextArea;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
 import java.sql.*;
 import javax.sql.rowset.CachedRowSet;
 
@@ -13,20 +12,13 @@ public class DBUtil {
 
     private String userName;
     private String userPassword;
-    private TextArea consoleTextArea;
-    private Logged logged=Logged.Null;
-    public enum Logged{
-        Null,
-        Employee,
-        Customer
-    }
+
 
     private Connection conn = null;
 
-    public DBUtil(String userName, String userPassword, TextArea consoleTextArea) {
+    public DBUtil(String userName, String userPassword) {
         this.userName = userName;
         this.userPassword = userPassword;
-        this.consoleTextArea = consoleTextArea;
     }
 
     public void dbConnect() throws SQLException, ClassNotFoundException {
@@ -34,7 +26,6 @@ public class DBUtil {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            consoleTextArea.appendText("No MySQL JDBC Driver found." + "\n");
             e.printStackTrace();
             throw e;
         }
@@ -42,7 +33,6 @@ public class DBUtil {
         try {
             conn = DriverManager.getConnection(createURL());
         } catch (SQLException e) {
-            consoleTextArea.appendText("Connection Failed! Try again." + "\n");
             e.printStackTrace();
             throw e;
         }
@@ -50,14 +40,9 @@ public class DBUtil {
     }
 
     public void dbDisconnect() throws SQLException {
-
         try {
-
             if (conn != null && !conn.isClosed()) {
-
                 conn.close();
-                consoleTextArea.appendText("Connection closed. Bye!" + "\n");
-
             }
         } catch (Exception e) {
             throw e;
@@ -97,7 +82,6 @@ public class DBUtil {
 
             crs.populate(resultSet);
         } catch (SQLException e) {
-            consoleTextArea.appendText("Problem occurred at executeQuery operation. \n");
             throw e;
         } finally {
             if (resultSet != null) {
@@ -119,9 +103,7 @@ public class DBUtil {
             dbConnect();
             stmt = conn.createStatement();
             stmt.executeUpdate(sqlStmt);
-
         } catch (SQLException e) {
-            consoleTextArea.appendText("Problem occurred at executeUpdate operation. \n");
             throw e;
         } finally {
             if (stmt != null) {

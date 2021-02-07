@@ -2,13 +2,15 @@ package edu.ib;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Logger {
 
     private int typeLogged;
     private DBUtil dbUtil;
-    public final int EMPLOYEE=0;
-    public final int CUSTOMER=1;
+    public static final int EMPLOYEE=0;
+    public static final int CUSTOMER=1;
 
 
     public Logger(DBUtil dbUtil,int typeLogged){
@@ -20,18 +22,19 @@ public class Logger {
         this.dbUtil=dbUtil;
     }
 
-    public boolean logIn(String password){
-        try {
-            String pass = hash(password);
-
-
-
-        } catch (Exception e){
-            e.getStackTrace();
-            return false;
+    public boolean logIn(String login,String hashedPassword) throws WrongLoginPasswordException, SQLException, ClassNotFoundException {
+        boolean out=false;
+        ResultSet result;
+        String statement = "SELECT check_password("+login+","+hashedPassword+","+typeLogged+")";
+        result = dbUtil.dbExecuteQuery(statement);
+        if(result.getInt(1)==0) {
+            throw new WrongLoginPasswordException("Wrong login or password");
+        } else {
+            out = true;
         }
-        return false;
+        return out;
     }
+
     public static String hash(String pass) throws NoSuchAlgorithmException {
         MessageDigest md=MessageDigest.getInstance("SHA-1");
         md.update(pass.getBytes());

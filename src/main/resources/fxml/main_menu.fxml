@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="edu.ib.controllers.MainMenuController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.MainMenuController">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="264.0" BorderPane.alignment="CENTER" />
+   </center>
+   <bottom>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnNewClient" mnemonicParsing="false" onAction="#addNewClient" text="Utwórz konto klienta" />
+            <Button fx:id="btnLogClient" alignment="CENTER" mnemonicParsing="false" onAction="#logClient" text="Klient" />
+            <Button fx:id="btnLogEmployee" mnemonicParsing="false" onAction="#logEmployee" text="Pracownik" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
