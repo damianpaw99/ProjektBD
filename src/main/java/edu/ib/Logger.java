@@ -11,28 +11,29 @@ public class Logger {
     private DBUtil dbUtil;
     public static final int EMPLOYEE=0;
     public static final int CUSTOMER=1;
+    private final String login;
+    private boolean loggedIn=false;
 
-
-    public Logger(DBUtil dbUtil,int typeLogged){
+    public Logger(DBUtil dbUtil,String login,int typeLogged){
         if(typeLogged==EMPLOYEE || typeLogged==CUSTOMER) {
             this.typeLogged = typeLogged;
+            this.login=login;
         } else {
             throw new IllegalArgumentException("Invalid logging person type number");
         }
         this.dbUtil=dbUtil;
     }
 
-    public boolean logIn(String login,String hashedPassword) throws WrongLoginPasswordException, SQLException, ClassNotFoundException {
-        boolean out=false;
+    public void logIn(String hashedPassword) throws WrongLoginPasswordException, SQLException, ClassNotFoundException {
         ResultSet result;
         String statement = "SELECT check_password("+login+","+hashedPassword+","+typeLogged+")";
         result = dbUtil.dbExecuteQuery(statement);
+        result.next();
         if(result.getInt(1)==0) {
             throw new WrongLoginPasswordException("Wrong login or password");
         } else {
-            out = true;
+            loggedIn=true;
         }
-        return out;
     }
 
     public static String hash(String pass) throws NoSuchAlgorithmException {
@@ -44,5 +45,10 @@ public class Logger {
             sb.append(Integer.toString((bytes[i]&0xFF)+0x100,16)).substring(1);
         }
         return sb.toString();
+    }
+    public String getLogin() throws WrongLoginPasswordException {
+        if(loggedIn) {
+            return login;
+        } else throw new WrongLoginPasswordException("Person is not logged in!");
     }
 }

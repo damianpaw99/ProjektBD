@@ -1,6 +1,8 @@
 package edu.ib.parcel;
 
 import edu.ib.DBUtil;
+import edu.ib.Logger;
+import edu.ib.WrongLoginPasswordException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,16 +11,16 @@ import java.sql.SQLException;
 
 public class ParcelHistoryDAO {
 
-    DBUtil dbUtil;
-    private final String userLogin;
+    private DBUtil dbUtil;
+    private final Logger logger;
 
     public static final int PARCEL_ID=0;
     public static final int STATUS=1;
     public static final int DATE=2;
 
-    public ParcelHistoryDAO(DBUtil dbUtil, String userLogin){
+    public ParcelHistoryDAO(DBUtil dbUtil, Logger logger){
         this.dbUtil=dbUtil;
-        this.userLogin=userLogin;
+        this.logger=logger;
     }
 
     private ObservableList<ParcelHistory> getParcelHistoryList(ResultSet rs) throws SQLException {
@@ -43,8 +45,8 @@ public class ParcelHistoryDAO {
         return parcelHistoryObservableList;
     }
 
-    public ObservableList<ParcelHistory> showAllParcels() throws ClassNotFoundException, SQLException {
-        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+userLogin+"\"";
+    public ObservableList<ParcelHistory> showAllParcels() throws ClassNotFoundException, SQLException, WrongLoginPasswordException {
+        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
 
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
@@ -57,7 +59,7 @@ public class ParcelHistoryDAO {
         }
     }
 
-    public ObservableList<ParcelHistory> searchParcel(String value, int itemSearch) throws ClassNotFoundException, SQLException, NumberFormatException {
+    public ObservableList<ParcelHistory> searchParcel(String value, int itemSearch) throws ClassNotFoundException, SQLException, NumberFormatException, WrongLoginPasswordException {
         String type;
         switch (itemSearch) {
             case PARCEL_ID ->{
@@ -75,7 +77,7 @@ public class ParcelHistoryDAO {
             default -> throw new IllegalArgumentException();
         }
 
-        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+userLogin+"\" AND "+type+"="+value;
+        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\" AND "+type+"="+value;
 
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
