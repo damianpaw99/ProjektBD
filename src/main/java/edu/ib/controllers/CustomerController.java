@@ -58,10 +58,10 @@ public class CustomerController {
     private TableColumn<ParcelHistory, Integer> tbRowID;
 
     @FXML
-    private TableColumn<ParcelHistory, Integer> tbRowDate;
+    private TableColumn<ParcelHistory, String> tbRowDate;
 
     @FXML
-    private TableColumn<ParcelHistory, Integer> tbRowStatus;
+    private TableColumn<ParcelHistory, String> tbRowStatus;
 
     @FXML
     private TextField etxtSearch;
