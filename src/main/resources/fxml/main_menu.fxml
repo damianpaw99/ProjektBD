@@ -1,22 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="401.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.MainMenuController">
-   <center>
-      <VBox prefHeight="200.0" prefWidth="264.0" BorderPane.alignment="CENTER" />
-   </center>
-   <bottom>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.MainMenuController">
+   <left>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #7987cb;" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnNewClient" mnemonicParsing="false" onAction="#addNewClient" text="Utwórz konto klienta" />
-            <Button fx:id="btnLogClient" alignment="CENTER" mnemonicParsing="false" onAction="#logClient" text="Klient" />
-            <Button fx:id="btnLogEmployee" mnemonicParsing="false" onAction="#logEmployee" text="Pracownik" />
-         </children>
-      </HBox>
-   </bottom>
+            <Button fx:id="btnNewClient" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addNewClient" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #000000;" text="Utwórz konto klienta" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Masz już konto?">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="4.5" width="10.0" />
+               </effect>
+            </Text>
+            <Button fx:id="btnLogClient" alignment="CENTER" maxHeight="-Infinity" mnemonicParsing="false" onAction="#logClient" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #000000;" text="Zaloguj jako klient" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="7.25" />
+               </effect></Button>
+            <Button fx:id="btnLogEmployee" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#logEmployee" prefHeight="25.0" prefWidth="140.0" style="-fx-background-color: #000000;" text="Zaloguj jako pracownik" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets bottom="80.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow height="10.0" radius="7.25" />
+               </effect></Button>
+            <Button fx:id="btnGetParcel" maxWidth="-Infinity" mnemonicParsing="false" prefWidth="140.0" style="-fx-background-color: #000000;" text="Odbierz paczkę" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
+         </children></VBox>
+   </left>
+   <center>
+      <ImageView fitHeight="400.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@../graphics/bluebox.png" />
+         </image>
+      </ImageView>
+   </center>
 </BorderPane>
