@@ -46,7 +46,7 @@ public class ParcelHistoryDAO {
     }
 
     public ObservableList<ParcelHistory> showAllParcels() throws ClassNotFoundException, SQLException, WrongLoginPasswordException {
-        String statement="SELECT ParcelID, Date, Status from parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
+        String statement="SELECT ParcelID, Date, Status FROM parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\"";
 
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);

@@ -2,70 +2,71 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.NewParcelController">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="login">
+            <TextField fx:id="etxtLogin" maxWidth="-Infinity" prefWidth="190.0" promptText="login">
                <VBox.margin>
                   <Insets bottom="5.0" top="10.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="hasło">
+            <PasswordField fx:id="etxtPassword" maxWidth="-Infinity" prefWidth="190.0" promptText="hasło">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </PasswordField>
+            <TextField fx:id="etxtName" maxWidth="-Infinity" prefWidth="190.0" promptText="Imię adresata">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="Imię adresata">
+            <TextField fx:id="etxtSurname" maxWidth="-Infinity" prefWidth="190.0" promptText="Nazwisko adresata">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="Nazwisko adresata">
+            <TextField fx:id="etxtPhone" maxWidth="-Infinity" prefWidth="190.0" promptText="Numer telefonu adresata">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="Numer telefonu adresata">
+            <TextField fx:id="etxtEmail" maxWidth="-Infinity" prefWidth="190.0" promptText="E-mail adresata">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="E-mail adresata">
+            <TextField fx:id="etxtOutbox" maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu nadawczego">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu nadawczego">
+            <TextField fx:id="etxtInbox" maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu odbiorczego">
                <VBox.margin>
                   <Insets bottom="5.0" />
                </VBox.margin>
             </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="ID automatu odbiorczego">
-               <VBox.margin>
-                  <Insets bottom="5.0" />
-               </VBox.margin>
-            </TextField>
-            <TextField maxWidth="-Infinity" prefWidth="190.0" promptText="Rozmiar przesyłki">
+            <TextField fx:id="etxtSize" maxWidth="-Infinity" prefWidth="190.0" promptText="Rozmiar przesyłki">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </TextField>
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Text fill="#a40606" strokeType="OUTSIDE" strokeWidth="0.0">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
             </Text>
-            <Button maxWidth="-Infinity" mnemonicParsing="false" prefWidth="190.0" text="Nadaj przesyłkę">
+            <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#addParcel" prefWidth="190.0" text="Nadaj przesyłkę">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -79,11 +80,22 @@
       </VBox>
    </left>
    <center>
-      <TableView prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbParcelLocker" prefHeight="200.0" prefWidth="400.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="100.0" text="ID automatu" />
-          <TableColumn prefWidth="300.0" text="Adres automatu" />
+          <TableColumn fx:id="tbRowID" prefWidth="100.0" text="ID automatu">
+           <cellValueFactory>
+              <PropertyValueFactory property="id" />
+           </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="tbRowAddress" prefWidth="300.0" text="Adres automatu">
+             <cellValueFactory>
+                <PropertyValueFactory property="address" />
+             </cellValueFactory>
+          </TableColumn>
         </columns>
       </TableView>
    </center>
+   <bottom>
+      <TextField fx:id="etxtSearch" onAction="#search" promptText="Wyszukaj" BorderPane.alignment="CENTER" />
+   </bottom>
 </BorderPane>
