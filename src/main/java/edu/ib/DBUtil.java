@@ -53,7 +53,7 @@ public class DBUtil {
 
         StringBuilder urlSB = new StringBuilder("jdbc:mysql://");
         urlSB.append("localhost:3306/");
-        urlSB.append("tennis_rackets?");
+        urlSB.append("parcel_database?");
         urlSB.append("useUnicode=true&characterEncoding=utf-8");
         urlSB.append("&user=");
         urlSB.append(userName);

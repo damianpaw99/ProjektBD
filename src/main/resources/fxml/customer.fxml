@@ -20,23 +20,23 @@
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
             <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="125.0" text="Login" />
             <Button fx:id="btnLogout" disable="true" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="126.0" text="Logout" />
-            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="125.0" text="Wróć" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backAction" prefHeight="26.0" prefWidth="125.0" text="Wroc" />
          </children>
       </VBox>
    </left>
    <right>
       <VBox prefHeight="400.0" prefWidth="128.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnAddParcel" disable="true" mnemonicParsing="false" onAction="#addParcel" prefHeight="27.0" prefWidth="129.0" text="Nadaj przesyłkę" />
+            <Button fx:id="btnAddParcel" disable="true" mnemonicParsing="false" onAction="#addParcel" prefHeight="27.0" prefWidth="129.0" text="Nadaj przesylke" />
          </children>
       </VBox>
    </right>
    <center>
-      <TableView fx:id="tbParcel" prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbParcel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="tbRowID" prefWidth="104.00000154972076" text="ID" />
-            <TableColumn fx:id="tbRowDate" prefWidth="114.39995574951172" text="Data" />
-            <TableColumn fx:id="tbRowStatus" prefWidth="126.39996337890625" text="Status" />
+          <TableColumn fx:id="tbRowDate" prefWidth="114.39995574951172" text="Data" />
+          <TableColumn fx:id="tbRowStatus" prefWidth="126.39996337890625" text="Status" />
         </columns>
       </TableView>
    </center>
