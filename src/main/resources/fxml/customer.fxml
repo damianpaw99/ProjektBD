@@ -17,6 +17,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="130.0" BorderPane.alignment="TOP_CENTER">
          <children>
+
             <TextField fx:id="etxtLogin" maxWidth="-Infinity" prefWidth="120.0" promptText="login">
                <VBox.margin>
                   <Insets bottom="5.0" top="10.0" />
@@ -46,12 +47,13 @@
          </children>
       </VBox>
    </left>
+
    <center>
-      <TableView fx:id="tbParcel" prefHeight="200.0" prefWidth="200.0" visible="false" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbParcel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="tbRowID" prefWidth="104.00000154972076" text="ID" />
-            <TableColumn fx:id="tbRowDate" prefWidth="114.39995574951172" text="Data" />
-            <TableColumn fx:id="tbRowStatus" prefWidth="126.39996337890625" text="Status" />
+          <TableColumn fx:id="tbRowDate" prefWidth="114.39995574951172" text="Data" />
+          <TableColumn fx:id="tbRowStatus" prefWidth="126.39996337890625" text="Status" />
         </columns>
       </TableView>
    </center>

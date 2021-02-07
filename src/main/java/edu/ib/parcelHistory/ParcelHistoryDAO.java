@@ -1,4 +1,4 @@
-package edu.ib.parcel;
+package edu.ib.parcelHistory;
 
 import edu.ib.DBUtil;
 import edu.ib.Logger;

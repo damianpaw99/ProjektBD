@@ -8,9 +8,8 @@ import java.util.ResourceBundle;
 import edu.ib.DBUtil;
 import edu.ib.Logger;
 import edu.ib.WrongLoginPasswordException;
-import edu.ib.parcel.Parcel;
-import edu.ib.parcel.ParcelHistory;
-import edu.ib.parcel.ParcelHistoryDAO;
+import edu.ib.parcelHistory.ParcelHistory;
+import edu.ib.parcelHistory.ParcelHistoryDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -38,6 +37,9 @@ public class CustomerController {
     private PasswordField etxtPassword;
 
     @FXML
+    private Text txtMessage;
+
+    @FXML
     private Button btnLogin;
 
     @FXML
@@ -50,29 +52,26 @@ public class CustomerController {
     private Button btnAddParcel;
 
     @FXML
-    private Text txtMessage;
-
-    @FXML
-    private TextField etxtSearch;
-
-    @FXML
     private TableView tbParcel;
 
     @FXML
     private TableColumn<ParcelHistory, Integer> tbRowID;
 
     @FXML
-    private TableColumn<ParcelHistory, String> tbRowDate;
+    private TableColumn<ParcelHistory, Integer> tbRowDate;
 
     @FXML
-    private TableColumn<ParcelHistory, String> tbRowStatus;
+    private TableColumn<ParcelHistory, Integer> tbRowStatus;
+
+    @FXML
+    private TextField etxtSearch;
 
     @FXML
     private ChoiceBox<String> spSearch;
 
     private DBUtil dbUtil;
     private ParcelHistoryDAO parcelHistoryDAO;
-    private ObservableList<String> choiceBoxList = FXCollections.emptyObservableList();
+    private ObservableList<String> choiceBoxList;
 
 
     @FXML
@@ -87,7 +86,7 @@ public class CustomerController {
     }
 
     @FXML
-    void back(ActionEvent event) {
+    void backAction(ActionEvent event) {
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
         try {
             Parent root=FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
@@ -102,7 +101,7 @@ public class CustomerController {
     void login(ActionEvent event) {
         Logger logger=new Logger(dbUtil,etxtLogin.getText(),Logger.CUSTOMER);
         try {
-            logger.logIn(Logger.hash(etxtPassword.getText()));
+            logger.logIn(Logger.hash(etxtPassword.getText())); //Logger.hash
             loginSuccess();
             parcelHistoryDAO=new ParcelHistoryDAO(dbUtil,logger);
 
@@ -142,11 +141,7 @@ public class CustomerController {
                 } else {
                     tbParcel.setItems(parcelHistoryDAO.searchParcel(etxtSearch.getText(), itemToSearch));
                 }
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (WrongLoginPasswordException e) {
+            } catch (ClassNotFoundException | SQLException | WrongLoginPasswordException e) {
                 e.printStackTrace();
             }
         }
@@ -158,6 +153,8 @@ public class CustomerController {
         etxtSearch.setDisable(false);
         etxtLogin.setDisable(true);
         etxtPassword.setDisable(true);
+        btnLogin.setDisable(true);
+        btnAddParcel.setDisable(true);
         txtMessage.setText("");
     }
 
@@ -169,8 +166,11 @@ public class CustomerController {
         etxtSearch.setDisable(false);
         etxtPassword.setDisable(false);
         etxtLogin.setDisable(false);
+        btnLogin.setDisable(false);
+        btnAddParcel.setDisable(false);
         etxtPassword.setText("");
         etxtLogin.setText("");
+        tbParcel.getItems().clear();
     }
 
 
@@ -191,6 +191,7 @@ public class CustomerController {
         assert spSearch != null : "fx:id=\"spSearch\" was not injected: check your FXML file 'customer.fxml'.";
 
         dbUtil=new DBUtil("customer","pass123");
+        choiceBoxList = FXCollections.observableArrayList();
         choiceBoxList.add("ID Paczki");
         choiceBoxList.add("Data");
         choiceBoxList.add("Status");

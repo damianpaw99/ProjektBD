@@ -48,7 +48,7 @@ public class MainMenuController {
             Parent root=FXMLLoader.load(getClass().getResource("/fxml/customer.fxml"));
             stage.setScene(new Scene(root,1000,800));
         } catch(Exception e){
-            e.getStackTrace();
+            System.out.println(e.toString());
         }
     }
 

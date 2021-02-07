@@ -1,4 +1,4 @@
-package edu.ib.parcel;
+package edu.ib.parcelHistory;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

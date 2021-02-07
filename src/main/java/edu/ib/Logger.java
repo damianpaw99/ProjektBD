@@ -9,8 +9,8 @@ public class Logger {
 
     private int typeLogged;
     private DBUtil dbUtil;
-    public static final int EMPLOYEE=0;
-    public static final int CUSTOMER=1;
+    public static final int EMPLOYEE=1;
+    public static final int CUSTOMER=0;
     private final String login;
     private boolean loggedIn=false;
 
@@ -26,7 +26,7 @@ public class Logger {
 
     public void logIn(String hashedPassword) throws WrongLoginPasswordException, SQLException, ClassNotFoundException {
         ResultSet result;
-        String statement = "SELECT check_password("+login+","+hashedPassword+","+typeLogged+")";
+        String statement = "SELECT check_password(\""+login+"\",\""+hashedPassword+"\","+typeLogged+")";
         result = dbUtil.dbExecuteQuery(statement);
         result.next();
         if(result.getInt(1)==0) {
