@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -70,10 +71,31 @@
    <center>
       <TableView fx:id="tbParcel" prefHeight="439.0" prefWidth="400.0" BorderPane.alignment="TOP_CENTER">
         <columns>
-          <TableColumn fx:id="tbRowID" editable="false" prefWidth="75.0" text="ID przesyłki" />
-          <TableColumn fx:id="tbRowStatus" prefWidth="75.0" text="Status" />
-            <TableColumn fx:id="tbRowOutboxAddress" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="120.0" text="Automat nadawczy" />
-            <TableColumn fx:id="tbRowInboxAddress" prefWidth="120.0" text="Automat odbiorczy" />
+          <TableColumn fx:id="tbRowID" editable="false" prefWidth="75.0" text="ID przesyłki">
+             <cellValueFactory>
+                <PropertyValueFactory property="parcelId" />
+             </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="tbRowStatus" prefWidth="75.0" text="Status">
+             <cellValueFactory>
+                <PropertyValueFactory property="state" />
+             </cellValueFactory>
+          </TableColumn>
+            <TableColumn fx:id="tbRowDate" prefWidth="75.0" text="Data" >
+               <cellValueFactory>
+                  <PropertyValueFactory property="date" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="tbRowOutboxAddress" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="120.0" text="Automat nadawczy">
+               <cellValueFactory>
+                  <PropertyValueFactory property="outboxAddress" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="tbRowInboxAddress" prefWidth="120.0" text="Automat odbiorczy">
+               <cellValueFactory>
+                  <PropertyValueFactory property="inboxAddress" />
+               </cellValueFactory>
+            </TableColumn>
         </columns>
       </TableView>
    </center>
