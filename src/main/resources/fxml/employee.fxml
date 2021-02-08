@@ -19,7 +19,7 @@
    <left>
       <VBox alignment="TOP_CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="etxtLogin" prefWidth="180.0" promptText="login">
+            <TextField fx:id="etxtLogin" prefWidth="180.0" promptText="Login">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -29,7 +29,7 @@
                <effect>
                   <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
                </effect></TextField>
-            <PasswordField fx:id="etxtPassword" prefWidth="180.0" promptText="hasło">
+            <PasswordField fx:id="etxtPassword" prefWidth="180.0" promptText="Hasło">
                <VBox.margin>
                   <Insets left="10.0" right="10.0" />
                </VBox.margin>

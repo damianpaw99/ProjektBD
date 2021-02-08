@@ -108,7 +108,7 @@
             </Button>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="23.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
-                  <Insets right="820.0" top="250.0" />
+                  <Insets right="820.0" top="270.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="18.0" />

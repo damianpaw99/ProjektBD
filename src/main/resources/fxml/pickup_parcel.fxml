@@ -44,7 +44,7 @@
       </HBox>
    </center>
    <bottom>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="377.0" BorderPane.alignment="CENTER">
          <children>
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
@@ -62,9 +62,9 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="510.0" style="-fx-background-color: #000000;" text="Wróć" textFill="#9fa8da">
+            <Button mnemonicParsing="false" onAction="#back" prefHeight="26.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets right="820.0" top="250.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="18.0" />

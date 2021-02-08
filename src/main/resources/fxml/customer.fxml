@@ -23,7 +23,7 @@
       <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER">
          <children>
 
-            <TextField fx:id="etxtLogin" prefWidth="180.0" promptText="login">
+            <TextField fx:id="etxtLogin" prefWidth="180.0" promptText="Login">
                <VBox.margin>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
@@ -33,7 +33,7 @@
                <effect>
                   <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
                </effect></TextField>
-            <PasswordField fx:id="etxtPassword" prefWidth="180.0" promptText="hasło">
+            <PasswordField fx:id="etxtPassword" prefWidth="180.0" promptText="Hasło">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>
@@ -69,7 +69,7 @@
                </effect></Button>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
-                  <Insets top="440.0" />
+                  <Insets top="470.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="18.0" />
