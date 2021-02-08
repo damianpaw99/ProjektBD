@@ -2,6 +2,7 @@ package edu.ib.controllers;
 
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -163,6 +164,21 @@ public class NewParcelController {
             }
         } catch (Exception e){
             e.printStackTrace();
+        }
+    }
+    @FXML
+    void cost(ActionEvent event){
+        if(etxtSize.getText().equals("A") || etxtSize.getText().equals("B") || etxtSize.getText().equals("C")) {
+            String statement = "SELECT calculate_shipping_cost('" + etxtSize.getText() + "')";
+            try {
+                ResultSet r = dbUtil.dbExecuteQuery(statement);
+                r.next();
+                txtMessage.setText(r.getDouble(1)+"zł");
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 

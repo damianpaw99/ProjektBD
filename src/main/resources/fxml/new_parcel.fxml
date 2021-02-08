@@ -152,6 +152,7 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Button mnemonicParsing="false" onAction="#cost" text="Wyświetl koszt" />
             <Button fx:id="btnBack" maxWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
                   <Insets top="280.0" />
