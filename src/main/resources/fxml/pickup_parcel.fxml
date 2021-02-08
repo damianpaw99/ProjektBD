@@ -15,7 +15,7 @@
    <center>
       <HBox alignment="BOTTOM_CENTER" prefHeight="400.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField prefWidth="250.0" promptText="ID przesyłki">
+            <TextField fx:id="etxtID" prefWidth="250.0" promptText="ID przesyłki">
                <opaqueInsets>
                   <Insets right="30.0" />
                </opaqueInsets>
@@ -26,7 +26,7 @@
                   <InnerShadow choke="0.2" color="#6886ba" height="30.5" radius="17.125" width="40.0" />
                </effect>
             </TextField>
-            <TextField prefWidth="250.0" promptText="Kod odbioru">
+            <TextField fx:id="etxtCode" prefWidth="250.0" promptText="Kod odbioru">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -46,12 +46,23 @@
    <bottom>
       <VBox alignment="TOP_CENTER" prefHeight="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0">
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Candara" size="14.0" />
                </font>
             </Text>
             <Button mnemonicParsing="false" onAction="#pickupParcel" prefHeight="26.0" prefWidth="510.0" style="-fx-background-color: #000000;" text="Odbierz przesyłkę" textFill="#9fa8da">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="510.0" style="-fx-background-color: #000000;" text="Wróć" textFill="#9fa8da">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
