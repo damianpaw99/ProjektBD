@@ -20,6 +20,9 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * class that handles employee login screen (employee.fxml)
+ */
 public class EmployeeController {
 
     @FXML
@@ -28,109 +31,184 @@ public class EmployeeController {
     @FXML
     private URL location;
 
+    /**
+     * editable text field to enter login
+     */
     @FXML
     private TextField etxtLogin;
 
+    /**
+     * editable text field to enter password
+     */
     @FXML
     private PasswordField etxtPassword;
 
+    /**
+     * text field with information about success or failure of acion
+     */
     @FXML
     private Text txtMessage;
 
+    /**
+     * login button
+     */
     @FXML
     private Button btnLogin;
 
+    /**
+     * button to return to home screen
+     */
     @FXML
     private Button btnBack;
 
+    /**
+     * logout button
+     */
     @FXML
     private Button btnLogout;
 
+    /**
+     * editable text field to enter parcel ID
+     */
     @FXML
     private TextField etxtParcelId;
 
+    /**
+     * button to pick up parcel from outbox
+     */
     @FXML
     private Button btnGetSendParcel;
 
+    /**
+     * button to leave parcel in inbox
+     */
     @FXML
     private Button btnLeaveParcel;
 
+    /**
+     * button to pick up missed parcel from inbox
+     */
     @FXML
     private Button btnMissedParcel;
 
+    /**
+     * table with handled parcels history
+     */
     @FXML
     private TableView tbParcel;
 
+    /**
+     * column with parcel ID
+     */
     @FXML
     private TableColumn<ParcelCourier, Integer> tbRowID;
 
+    /**
+     * column with status
+     */
     @FXML
     private TableColumn<ParcelCourier, String> tbRowStatus;
 
+    /**
+     * column with address of parcels machine with outbox
+     */
     @FXML
     private TableColumn<ParcelCourier, String> tbRowOutboxAddress;
 
+    /**
+     * column with oddress of parcels machine with inbox
+     */
     @FXML
     private TableColumn<ParcelCourier, String> tbRowInboxAddress;
 
+    /**
+     * column with date of status update
+     */
     @FXML
     private TableColumn<ParcelCourier, String> tbRowDate;
 
+    /**
+     * editable text field to search parcel
+     */
     @FXML
     private TextField etxtSearch;
 
+    /**
+     * object used to connect to database
+     */
     private DBUtil dbUtil;
+
+    /**
+     * object used to get data from database from view courier_parcels
+     */
     private ParcelCourierDAO parcelCourierDAO;
 
-
+    /**
+     * method of returning to home screen
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
-        Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-            Parent root= FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
             doLogout();
-            stage.setScene(new Scene(root,1000,800));
-        } catch(Exception e){
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * method of picking up parcel from outbox
+     *
+     * @param event information about event
+     */
     @FXML
     void getSendParcel(ActionEvent event) {
-        try{
+        try {
             Integer.parseInt(etxtParcelId.getText());
             String statement = "CALL pickup_by_courier(" + etxtParcelId.getText() + ")";
             dbUtil.dbExecuteUpdate(statement);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * method of leaving parcel to inbox
+     *
+     * @param event information about event
+     */
     @FXML
     void leaveParcel(ActionEvent event) {
-        try{
+        try {
             Integer.parseInt(etxtParcelId.getText());
             String statement = "CALL delivery_by_courier(" + etxtParcelId.getText() + ")";
             dbUtil.dbExecuteUpdate(statement);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * login method
+     *
+     * @param event information about event
+     */
     @FXML
     void login(ActionEvent event) {
-        Logger logger=new Logger(dbUtil,etxtLogin.getText(),Logger.EMPLOYEE);
+        Logger logger = new Logger(dbUtil, etxtLogin.getText(), Logger.EMPLOYEE);
         try {
             logger.logIn(Logger.hash(etxtPassword.getText())); //Logger.hash
             loginSuccess();
-            parcelCourierDAO=new ParcelCourierDAO(dbUtil,logger);
+            parcelCourierDAO = new ParcelCourierDAO(dbUtil, logger);
 
-        } catch (WrongLoginPasswordException e){
+        } catch (WrongLoginPasswordException e) {
             txtMessage.setText("Niepoprawny login lub hasło!");
             e.printStackTrace();
-        } catch(NoSuchAlgorithmException | SQLException | ClassNotFoundException e){
+        } catch (NoSuchAlgorithmException | SQLException | ClassNotFoundException e) {
             txtMessage.setText("Nastąpił błąd podczas weryfikacji");
             e.printStackTrace();
         }
@@ -142,7 +220,10 @@ public class EmployeeController {
         }
     }
 
-    private void loginSuccess(){
+    /**
+     * method of unlocking buttons, text fields and table after logging in to account
+     */
+    private void loginSuccess() {
         btnLogout.setDisable(false);
         tbParcel.setVisible(true);
         etxtSearch.setDisable(false);
@@ -153,13 +234,21 @@ public class EmployeeController {
         etxtParcelId.setDisable(false);
     }
 
+    /**
+     * logout method
+     *
+     * @param event information about event
+     */
     @FXML
     void logout(ActionEvent event) {
         doLogout();
     }
 
-    private void doLogout(){
-        parcelCourierDAO=null;
+    /**
+     * method of blocking buttons, text fields, table and access to database after logging out of account
+     */
+    private void doLogout() {
+        parcelCourierDAO = null;
         btnLogout.setDisable(true);
         tbParcel.setVisible(false);
         etxtSearch.setText("");
@@ -174,26 +263,35 @@ public class EmployeeController {
         etxtParcelId.setDisable(true);
     }
 
+    /**
+     * method of unlocking parcel handling buttons
+     *
+     * @param event information about event
+     */
     @FXML
     void toggleButtons(ActionEvent event) {
-        try{
+        try {
             Integer.parseInt(etxtParcelId.getText());
             btnGetSendParcel.setDisable(false);
             btnLeaveParcel.setDisable(false);
             btnMissedParcel.setDisable(false);
-        }
-        catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * method updating table with history of handled parcels
+     *
+     * @param event information about event
+     */
     @FXML
     void update(ActionEvent event) {
-        if(parcelCourierDAO!=null){
+        if (parcelCourierDAO != null) {
 
             tbParcel.getItems().clear();
             try {
-                if(etxtSearch.getText().equals("")) {
+                if (etxtSearch.getText().equals("")) {
                     tbParcel.setItems(parcelCourierDAO.showAllParcels());
                 } else {
                     tbParcel.setItems(parcelCourierDAO.searchParcel(etxtSearch.getText()));
@@ -204,6 +302,9 @@ public class EmployeeController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert etxtLogin != null : "fx:id=\"etxtLogin\" was not injected: check your FXML file 'employee.fxml'.";
@@ -224,6 +325,6 @@ public class EmployeeController {
         assert etxtSearch != null : "fx:id=\"etxtSearch\" was not injected: check your FXML file 'employee.fxml'.";
         assert tbRowDate != null : "fx:id=\"tbRowDate\" was not injected: check your FXML file 'employee.fxml'.";
 
-        dbUtil=new DBUtil("employee","emppass321");
+        dbUtil = new DBUtil("employee", "emppass321");
     }
 }
