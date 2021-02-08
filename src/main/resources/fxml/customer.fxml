@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,9 +16,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.CustomerController">
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+
 
    <left>
       <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="500.0" prefWidth="200.0" BorderPane.alignment="TOP_CENTER">
@@ -45,7 +45,7 @@
                </effect></PasswordField>
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font name="Candara" size="9.0" />
+                  <Font name="Candara" size="14.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -93,24 +93,27 @@
    </left>
 
    <center>
-      <TableView fx:id="tbParcel" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbParcel" editable="true" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="790.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tbRowID" prefWidth="104.00000154972076" text="ID" >
+          <TableColumn fx:id="tbRowID" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="ID">
              <cellValueFactory>
                 <PropertyValueFactory property="parcelId" />
              </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="tbRowDate" prefWidth="114.39995574951172" text="Data" >
+          <TableColumn fx:id="tbRowDate" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" text="Data">
              <cellValueFactory>
                 <PropertyValueFactory property="date" />
              </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="tbRowStatus" prefWidth="126.39996337890625" text="Status" >
+          <TableColumn fx:id="tbRowStatus" prefWidth="290.0" text="Status">
              <cellValueFactory>
                 <PropertyValueFactory property="state" />
              </cellValueFactory>
           </TableColumn>
         </columns>
+         <BorderPane.margin>
+            <Insets right="10.0" top="10.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
    <bottom>

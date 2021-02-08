@@ -6,9 +6,9 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -41,7 +41,7 @@
                </effect></PasswordField>
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
-                  <Font name="Candara" size="9.0" />
+                  <Font name="Candara" size="14.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -125,7 +125,7 @@
       </VBox>
    </right>
    <center>
-      <TableView fx:id="tbParcel" prefHeight="439.0" prefWidth="400.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="TOP_CENTER">
+      <TableView fx:id="tbParcel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="530.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="TOP_CENTER">
         <columns>
 
           <TableColumn fx:id="tbRowID" editable="false" prefWidth="75.0" text="ID przesyłki">
@@ -133,27 +133,30 @@
                 <PropertyValueFactory property="parcelId" />
              </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="tbRowStatus" prefWidth="75.0" text="Status">
+          <TableColumn fx:id="tbRowStatus" prefWidth="85.0" text="Status">
              <cellValueFactory>
                 <PropertyValueFactory property="state" />
              </cellValueFactory>
           </TableColumn>
-            <TableColumn fx:id="tbRowDate" prefWidth="75.0" text="Data" >
+            <TableColumn fx:id="tbRowDate" prefWidth="115.0" text="Data">
                <cellValueFactory>
                   <PropertyValueFactory property="date" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="tbRowOutboxAddress" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="120.0" text="Automat nadawczy">
+            <TableColumn fx:id="tbRowOutboxAddress" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="125.0" text="Automat nadawczy">
                <cellValueFactory>
                   <PropertyValueFactory property="outboxAddress" />
                </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="tbRowInboxAddress" prefWidth="120.0" text="Automat odbiorczy">
+            <TableColumn fx:id="tbRowInboxAddress" prefWidth="125.0" text="Automat odbiorczy">
                <cellValueFactory>
                   <PropertyValueFactory property="inboxAddress" />
                </cellValueFactory>
             </TableColumn>
         </columns>
+         <BorderPane.margin>
+            <Insets top="10.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
    <bottom>
