@@ -1,26 +1,43 @@
 package edu.ib;
 
 import com.github.vldrus.sql.rowset.CachedRowSetWrapper;
-import javafx.scene.control.TextArea;
-
 
 import java.sql.*;
 import javax.sql.rowset.CachedRowSet;
 
-
+/**
+ * Class used to connect to database
+ */
 public class DBUtil {
-
+    /**
+     * Username
+     */
     private String userName;
+    /**
+     * User password
+     */
     private String userPassword;
-
-
+    /**
+     * Connection class object
+     */
     private Connection conn = null;
 
+    /**
+     * Base constructor
+     *
+     * @param userName     Username
+     * @param userPassword User password
+     */
     public DBUtil(String userName, String userPassword) {
         this.userName = userName;
         this.userPassword = userPassword;
     }
 
+    /**
+     * Method used to connect to database
+     *
+     * @throws SQLException Thrown, when there was a problem with database or login or password was incorrect
+     */
     public void dbConnect() throws SQLException, ClassNotFoundException {
 
         try {
@@ -39,6 +56,11 @@ public class DBUtil {
 
     }
 
+    /**
+     * Method used to disconnect
+     *
+     * @throws SQLException Thrown, when there was a problem database
+     */
     public void dbDisconnect() throws SQLException {
         try {
             if (conn != null && !conn.isClosed()) {
@@ -49,6 +71,11 @@ public class DBUtil {
         }
     }
 
+    /**
+     * Method creating URL used to connect to database
+     *
+     * @return URL
+     */
     private String createURL() {
 
         StringBuilder urlSB = new StringBuilder("jdbc:mysql://");
@@ -64,6 +91,13 @@ public class DBUtil {
         return urlSB.toString();
     }
 
+    /**
+     * Method used to get data from database
+     *
+     * @param queryStmt SQL statement
+     * @return Data
+     * @throws SQLException Thrown, when was a problem with database or username/password was incorrect
+     */
     public ResultSet dbExecuteQuery(String queryStmt) throws SQLException, ClassNotFoundException {
 
         PreparedStatement stmt = null;
@@ -96,7 +130,13 @@ public class DBUtil {
         return crs;
     }
 
-    public  void dbExecuteUpdate(String sqlStmt) throws SQLException, ClassNotFoundException {
+    /**
+     * Method used to execute un update on database
+     *
+     * @param sqlStmt SQL statement
+     * @throws SQLException Thrown, when there was a problem with database or username/password was incorrect
+     */
+    public void dbExecuteUpdate(String sqlStmt) throws SQLException, ClassNotFoundException {
 
         Statement stmt = null;
         try {
