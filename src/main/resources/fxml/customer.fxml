@@ -48,7 +48,7 @@
                   <Font name="Candara" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" top="5.0" />
                </VBox.margin></Text>
             <Button fx:id="btnLogin" minWidth="-Infinity" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Zaloguj" textFill="#9fa8da">
                <VBox.margin>
@@ -69,7 +69,7 @@
                </effect></Button>
             <Button fx:id="btnBack" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
-                  <Insets top="470.0" />
+                  <Insets top="465.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="18.0" />

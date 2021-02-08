@@ -88,7 +88,10 @@
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <font>
                   <Font name="Candara" size="14.0" />
-               </font></Text>
+               </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></Text>
          </children>
       </VBox>
    </center>

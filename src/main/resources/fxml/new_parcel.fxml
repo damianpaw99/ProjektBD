@@ -134,7 +134,7 @@
             </TextField>
             <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
                <VBox.margin>
-                  <Insets bottom="20.0" />
+                  <Insets bottom="20.0" top="5.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="14.0" />
@@ -152,10 +152,16 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button mnemonicParsing="false" onAction="#cost" text="Wyświetl koszt" />
+            <Button maxWidth="-Infinity" mnemonicParsing="false" onAction="#cost" prefWidth="280.0" style="-fx-background-color: #000000;" text="Wyświetl koszt" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
             <Button fx:id="btnBack" maxWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="26.0" prefWidth="280.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
                <VBox.margin>
-                  <Insets top="280.0" />
+                  <Insets top="240.0" />
                </VBox.margin>
                <font>
                   <Font name="Candara" size="18.0" />

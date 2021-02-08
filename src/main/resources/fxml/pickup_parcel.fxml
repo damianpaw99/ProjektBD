@@ -50,6 +50,9 @@
                <font>
                   <Font name="Candara" size="14.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Text>
             <Button mnemonicParsing="false" onAction="#pickupParcel" prefHeight="26.0" prefWidth="510.0" style="-fx-background-color: #000000;" text="Odbierz przesyłkę" textFill="#9fa8da">
                <VBox.margin>

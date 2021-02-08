@@ -44,7 +44,7 @@
                   <Font name="Candara" size="14.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" top="5.0" />
                </VBox.margin>
             </Text>
             <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" prefHeight="26.0" prefWidth="180.0" style="-fx-background-color: #000000;" text="Zaloguj" textFill="#9fa8da">
