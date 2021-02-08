@@ -31,15 +31,7 @@ public class ParcelHistoryDAO {
             parcelHistory.setParcelId(rs.getInt("ParcelID"));
             parcelHistory.setDate(rs.getDate("Date").toString()+" "+rs.getTime("Date").toString());
             String state=rs.getString("Status");
-            String out = switch (state) {
-                case "ready_for_pickup_by_courier" -> "Nadana";
-                case "pickedup_by_courier" -> "Podjęta przez kuriera";
-                case "ready_for_pickup_by_addressee" -> "Gotowa do odbioru";
-                case "received" -> "Odebrana";
-                case "missed" -> "Nieodebrana";
-                default -> "";
-            };
-            parcelHistory.setState(out);
+            parcelHistory.setState(state);
             parcelHistoryObservableList.add(parcelHistory);
         }
         return parcelHistoryObservableList;
@@ -68,15 +60,7 @@ public class ParcelHistoryDAO {
             }
             case STATUS -> {
                 type = "Status";
-                value = switch (value) {
-                    case "Nadana" -> "ready_for_pickup_by_courier";
-                    case "Podjęta przez kuriera"-> "pickedup_by_courier";
-                    case "Gotowa do odbioru"-> "ready_for_pickup_by_addressee";
-                    case "Odebrana"-> "received";
-                    case "Nieodebrana"-> "missed";
-                    default -> "";
-                };
-                value = "\"%" + value + "\"%";
+                value = "\"%" + value + "%\"";
             }
             case DATE -> {
                 type = "Date";
@@ -86,7 +70,6 @@ public class ParcelHistoryDAO {
         }
 
         String statement="SELECT ParcelID, Date, Status FROM parcels_history WHERE SenderLogin=\""+logger.getLogin()+"\" AND "+type+" LIKE "+value;
-        System.out.println(statement);
         try {
             ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
 

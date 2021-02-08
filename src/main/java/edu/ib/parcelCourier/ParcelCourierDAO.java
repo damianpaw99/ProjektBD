@@ -29,16 +29,8 @@ public class ParcelCourierDAO {
             String inboxAddress=rs.getString("MachineInboxAddress");
             String state=rs.getString("Status");
             String date=rs.getDate("Date").toString()+" "+rs.getTime("Date").toString();
-            String out = switch (state) {
-                case "ready_for_pickup_by_courier" -> "Nadana";
-                case "pickedup_by_courier" -> "Podjęta przez kuriera";
-                case "ready_for_pickup_by_addressee" -> "Gotowa do odbioru";
-                case "received" -> "Odebrana";
-                case "missed" -> "Nieodebrana";
-                default -> "";
-            };
             parcelCourier.setDate(date);
-            parcelCourier.setState(out);
+            parcelCourier.setState(state);
             parcelCourier.setInboxAddress(inboxAddress);
             parcelCourier.setOutboxAddress(outboxAddress);
             parcelCourierObservableList.add(parcelCourier);
@@ -60,31 +52,18 @@ public class ParcelCourierDAO {
         }
     }
 
-//    public ObservableList<ParcelCourier> searchParcel(String value, int itemSearch) throws ClassNotFoundException, SQLException, NumberFormatException, WrongLoginPasswordException {
-//        String type;
-//        switch (itemSearch) {
-//            case PARCEL_ID ->{
-//                type = "ParcelID";
-//                Integer.parseInt(value);
-//            }
-//            case STATUS -> {
-//                type = "Status";
-//                value = "\"" + value + "\"";
-//            }
-//
-//            default -> throw new IllegalArgumentException();
-//        }
-//
-//        String statement="SELECT ParcelID, Status, MachineOutboxAddress, MachineInboxAddress WHERE SenderLogin=\""+logger.getLogin()+"\" AND "+type+"="+value;
-//
-//        try {
-//            ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
-//
-//            return getParcelCourierList(resultSet);
-//
-//
-//        } catch (SQLException e) {
-//            throw e;
-//        }
-//    }
+    public ObservableList<ParcelCourier> searchParcel(String value) throws ClassNotFoundException, SQLException, NumberFormatException, WrongLoginPasswordException {
+       String statement="SELECT ParcelID, Status, MachineOutboxAddress, MachineInboxAddress, Date FROM courier_parcels WHERE CourierLogin=\""+logger.getLogin()+"\"";
+       statement+=" AND (ParcelID LIKE \"%"+value+"%\" OR Status LIKE \"%"+value+"%\" OR MachineOutboxAddress LIKE \"%"+value+"%\" OR MachineInboxAddress LIKE \"%"+value+"%\" OR Date LIKE \"%"+value+"%\")";
+
+        try {
+            ResultSet resultSet = dbUtil.dbExecuteQuery(statement);
+
+            return getParcelCourierList(resultSet);
+
+
+     } catch (SQLException e) {
+          throw e;
+        }
+    }
 }

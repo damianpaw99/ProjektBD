@@ -37,7 +37,13 @@ public class MainMenuController {
 
     @FXML
     void addEmployee(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/new_employee.fxml"));
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML
@@ -67,6 +73,17 @@ public class MainMenuController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/employee.fxml"));
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
+
+    @FXML
+    void pickupParcel(ActionEvent event){
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/pickup_parcel.fxml"));
             stage.setScene(new Scene(root, 1000, 800));
         } catch (Exception e) {
             e.getStackTrace();

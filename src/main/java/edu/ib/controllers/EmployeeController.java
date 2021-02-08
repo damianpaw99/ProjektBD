@@ -123,14 +123,14 @@ public class EmployeeController {
     void login(ActionEvent event) {
         Logger logger=new Logger(dbUtil,etxtLogin.getText(),Logger.EMPLOYEE);
         try {
-            logger.logIn(etxtPassword.getText()); //Logger.hash
+            logger.logIn(Logger.hash(etxtPassword.getText())); //Logger.hash
             loginSuccess();
             parcelCourierDAO=new ParcelCourierDAO(dbUtil,logger);
 
         } catch (WrongLoginPasswordException e){
             txtMessage.setText("Niepoprawny login lub hasło!");
             e.printStackTrace();
-        } catch(/*NoSuchAlgorithmException |*/ SQLException | ClassNotFoundException e){
+        } catch(NoSuchAlgorithmException | SQLException | ClassNotFoundException e){
             txtMessage.setText("Nastąpił błąd podczas weryfikacji");
             e.printStackTrace();
         }
@@ -196,7 +196,7 @@ public class EmployeeController {
                 if(etxtSearch.getText().equals("")) {
                     tbParcel.setItems(parcelCourierDAO.showAllParcels());
                 } else {
-                    //tbParcel.setItems(parcelCourierDAO.searchParcel(etxtSearch.getText()));
+                    tbParcel.setItems(parcelCourierDAO.searchParcel(etxtSearch.getText()));
                 }
             } catch (ClassNotFoundException | SQLException | WrongLoginPasswordException e) {
                 e.printStackTrace();
