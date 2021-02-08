@@ -81,7 +81,7 @@ public class CustomerController {
             Parent root= FXMLLoader.load(getClass().getResource("/fxml/new_parcel.fxml"));
             stage.setScene(new Scene(root,1000,800));
         } catch(Exception e){
-            e.getStackTrace();
+            e.printStackTrace();
         }
     }
 
