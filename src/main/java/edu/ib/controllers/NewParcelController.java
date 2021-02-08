@@ -1,6 +1,6 @@
 package edu.ib.controllers;
 
-import java.net.URL;
+import /**/java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,6 +25,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * class that handles new parcel creation screen (new_parcel.fxml)
+ */
 public class NewParcelController {
 
     @FXML
@@ -33,54 +36,111 @@ public class NewParcelController {
     @FXML
     private URL location;
 
+    /**
+     * editable text field to enter customer login
+     */
     @FXML
     private TextField etxtLogin;
 
+    /**
+     * editable text field to enter customer password
+     */
     @FXML
     private PasswordField etxtPassword;
 
+    /**
+     * editable text field to enter firstname of addressee
+     */
     @FXML
     private TextField etxtName;
 
+    /**
+     * editable text field to enter surname of addressee
+     */
     @FXML
     private TextField etxtSurname;
 
+    /**
+     * editable text field to enter phone number of addressee
+     */
     @FXML
     private TextField etxtPhone;
 
+    /**
+     * editable text field to enter email of addressee
+     */
     @FXML
     private TextField etxtEmail;
 
+    /**
+     * editable text field to enter ID of parcels machine (with outbox)
+     */
     @FXML
     private TextField etxtOutbox;
 
+    /**
+     * editable text field to enter ID of parcels machine (with inbox)
+     */
     @FXML
     private TextField etxtInbox;
 
+    /**
+     * editable text field to enter size od parcel
+     */
     @FXML
     private TextField etxtSize;
 
+    /**
+     * text field with information about success or failure of acion
+     */
     @FXML
     private Text txtMessage;
 
+    /**
+     * button to return to home screen
+     */
     @FXML
     private Button btnBack;
 
+    /**
+     * table with avaliable parcels machines
+     */
     @FXML
     private TableView tbParcelLocker;
 
+    /**
+     * column with machine ID
+     */
     @FXML
     private TableColumn<ParcelLocker, Integer> tbRowID;
 
+    /**
+     * column with machine address
+     */
     @FXML
     private TableColumn<ParcelLocker, String> tbRowAddress;
 
+    /**
+     * editable text field to search parcel
+     */
     @FXML
     private TextField etxtSearch;
 
+    /**
+     * object used to connect to database
+     */
     private DBUtil dbUtil;
+
+    /**
+     * object used to get data from database from view courier_parcels
+     */
     private ParcelLockerDAO parcelLockerDAO;
 
+    /**
+     * method of adding new parcel
+     *
+     * @param event information about event
+     */
     @FXML
     void addParcel(ActionEvent event) {
         try {
@@ -142,6 +202,11 @@ public class NewParcelController {
 
     }
 
+    /**
+     * method of returning to previous screen (customer login screen)
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
         Stage stage=(Stage)((Node)event.getSource()).getScene().getWindow();
@@ -153,6 +218,11 @@ public class NewParcelController {
         }
     }
 
+    /**
+     * method of seatching parcels machine
+     *
+     * @param event information about event
+     */
     @FXML
     void search(ActionEvent event) {
         tbParcelLocker.getItems().clear();
@@ -166,6 +236,12 @@ public class NewParcelController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * method of displaying the shipping cost
+     *
+     * @param event information about event
+     */
     @FXML
     void cost(ActionEvent event){
         if(etxtSize.getText().equals("A") || etxtSize.getText().equals("B") || etxtSize.getText().equals("C")) {
@@ -182,6 +258,9 @@ public class NewParcelController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert etxtLogin != null : "fx:id=\"etxtLogin\" was not injected: check your FXML file 'new_parcel.fxml'.";

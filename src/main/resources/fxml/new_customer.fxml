@@ -35,7 +35,7 @@
                <font>
                   <Font name="Candara" size="18.0" />
                </font></TextField>
-            <TextField fx:id="etxtEmail" maxWidth="-Infinity" prefWidth="900.0" promptText="Email">
+            <TextField fx:id="etxtEmail" maxWidth="-Infinity" prefWidth="900.0" promptText="E-mail">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>

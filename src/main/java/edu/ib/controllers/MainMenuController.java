@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * class that handles home screen (main_menu.fxml)
+ */
 public class MainMenuController {
 
     @FXML
@@ -20,21 +23,41 @@ public class MainMenuController {
     @FXML
     private URL location;
 
+    /**
+     * button to go to new customer creation screen
+     */
     @FXML
     private Button btnNewClient;
 
+    /**
+     * button to go to new employee creation screen
+     */
     @FXML
     private Button btnNewEmployee;
 
+    /**
+     * button to go to customer login screen
+     */
     @FXML
     private Button btnLogClient;
 
+    /**
+     * button to go to employee login screen
+     */
     @FXML
     private Button btnLogEmployee;
 
+    /**
+     * button to go to parcel pickup screen
+     */
     @FXML
     private Button btnGetParcel;
 
+    /**
+     * method to go to new employee creation screen
+     *
+     * @param event information about event
+     */
     @FXML
     void addEmployee(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -46,6 +69,11 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * method to go to new customer creation screen
+     *
+     * @param event information about event
+     */
     @FXML
     void addNewClient(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -57,6 +85,11 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * method to go to customer login screen
+     *
+     * @param event information about event
+     */
     @FXML
     void logClient(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -68,6 +101,11 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * method to go to customer login screen
+     *
+     * @param event information about event
+     */
     @FXML
     void logEmployee(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -79,8 +117,13 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * method to go to parcel pickup screen
+     *
+     * @param event information about event
+     */
     @FXML
-    void pickupParcel(ActionEvent event){
+    void pickupParcel(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/fxml/pickup_parcel.fxml"));
@@ -90,6 +133,9 @@ public class MainMenuController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert btnNewClient != null : "fx:id=\"btnNewClient\" was not injected: check your FXML file 'main_menu.fxml'.";
