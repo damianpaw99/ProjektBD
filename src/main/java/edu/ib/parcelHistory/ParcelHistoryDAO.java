@@ -90,7 +90,7 @@ public class ParcelHistoryDAO {
     /**
      * Method connecting to database using DBUtil object and getting searched data
      *
-     * @param value      Data to search in machine_senders_view
+     * @param value      Data to search in parcels_history view
      * @param itemSearch Number representing what data to search in database
      * @return Searched parcels machines from parcels_history view from database for a logged user (in Logger object)
      * @throws SQLException                Thrown, when there was a problem with database

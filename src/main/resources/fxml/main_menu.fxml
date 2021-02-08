@@ -24,7 +24,7 @@
                <effect>
                   <DropShadow />
                </effect></Button>
-            <Button fx:id="btnNewEmployee" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addEmployee" prefWidth="280.0" style="-fx-background-color: #000000;" text="Utwórz konto pracownika" textFill="#9fa8da">
+            <Button fx:id="btnNewEmployee" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#administrator" prefWidth="280.0" style="-fx-background-color: #000000;" text="Administrator" textFill="#9fa8da">
                <VBox.margin>
                   <Insets bottom="100.0" />
                </VBox.margin>

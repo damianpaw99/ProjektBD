@@ -114,7 +114,7 @@
                <effect>
                   <DropShadow />
                </effect></Button>
-            <Button fx:id="btnMissedParcel" disable="true" mnemonicParsing="false" prefWidth="250.0" style="-fx-background-color: #000000;" text="Odbierz nieodebraną paczkę" textFill="#9fa8da">
+            <Button fx:id="btnMissedParcel" disable="true" mnemonicParsing="false" onAction="#returnParcel" prefWidth="250.0" style="-fx-background-color: #000000;" text="Odbierz nieodebraną paczkę" textFill="#9fa8da">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>

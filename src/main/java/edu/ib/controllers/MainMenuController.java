@@ -59,10 +59,10 @@ public class MainMenuController {
      * @param event information about event
      */
     @FXML
-    void addEmployee(ActionEvent event) {
+    void administrator(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/new_employee.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/administrator_menu.fxml"));
             stage.setScene(new Scene(root, 1000, 800));
         } catch (Exception e) {
             e.getStackTrace();

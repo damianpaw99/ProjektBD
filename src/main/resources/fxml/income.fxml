@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.IncomeController">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="etxtLogin" />
+            <PasswordField fx:id="etxtPassword" />
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="Zaloguj" />
+            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" text="Wyloguj" />
+            <Button mnemonicParsing="false" onAction="#back" text="Powrót" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <TableView fx:id="tbIncome" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="tbRowDate" prefWidth="75.0" text="Data" />
+          <TableColumn fx:id="tbRowIncome" prefWidth="75.0" text="Przychód" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <TextField fx:id="etxtSearch" onAction="#search" promptText="Wyszukaj datę" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

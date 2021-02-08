@@ -177,6 +177,20 @@ public class EmployeeController {
     }
 
     /**
+     * method of picking missed parcel from inbox
+     * @param event information about event
+     */
+    @FXML
+    void returnParcel(ActionEvent event){
+        try {
+            Integer.parseInt(etxtParcelId.getText());
+            String statement = "CALL pickup_missed_parcel(" + etxtParcelId.getText() + ")";
+            dbUtil.dbExecuteUpdate(statement);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
      * method of leaving parcel to inbox
      *
      * @param event information about event
@@ -204,7 +218,12 @@ public class EmployeeController {
             logger.logIn(Logger.hash(etxtPassword.getText())); //Logger.hash
             loginSuccess();
             parcelCourierDAO = new ParcelCourierDAO(dbUtil, logger);
-
+            tbParcel.getItems().clear();
+            try {
+                tbParcel.setItems(parcelCourierDAO.showAllParcels());
+            } catch (ClassNotFoundException | SQLException | WrongLoginPasswordException e) {
+                e.printStackTrace();
+            }
         } catch (WrongLoginPasswordException e) {
             txtMessage.setText("Niepoprawny login lub hasło!");
             e.printStackTrace();
@@ -212,12 +231,7 @@ public class EmployeeController {
             txtMessage.setText("Nastąpił błąd podczas weryfikacji");
             e.printStackTrace();
         }
-        tbParcel.getItems().clear();
-        try {
-            tbParcel.setItems(parcelCourierDAO.showAllParcels());
-        } catch (ClassNotFoundException | SQLException | WrongLoginPasswordException e) {
-            e.printStackTrace();
-        }
+
     }
 
     /**
