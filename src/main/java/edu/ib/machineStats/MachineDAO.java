@@ -41,7 +41,7 @@ public class MachineDAO {
             Machine machineStats = new Machine();
             machineStats.setId(rs.getInt("ID"));
             machineStats.setAddress(rs.getString("Address"));
-            machineStats.setDate(rs.getDate("Date").toString());
+            machineStats.setDate(rs.getString("Date"));
             machineStats.setSend(rs.getInt("Nadana"));
             machineStats.setPickupCourier(rs.getInt("Podjeta"));
             machineStats.setReadyToPickup(rs.getInt("Doodbioru"));

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.BorderPane?>
@@ -75,13 +76,46 @@
    <center>
       <TableView fx:id="tbMachine" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tbRowID" text="ID" />
-          <TableColumn fx:id="tbRowAddress" prefWidth="235.0" text="Adres" />
-            <TableColumn fx:id="tbRowDate" prefWidth="130.0" text="Data" />
-            <TableColumn fx:id="tbRowToPickup" text="Nadano" />
-            <TableColumn fx:id="tbRowPickedup" text="Podjęto" />
-            <TableColumn fx:id="tbRowToPickupClient" prefWidth="90.0" text="Do odbioru" />
-            <TableColumn fx:id="tbRowMissed" prefWidth="90.0" text="Nieodebrane" />
+          <TableColumn fx:id="tbRowID" prefWidth="38.399993896484375" text="ID">
+             <cellValueFactory>
+                <PropertyValueFactory property="id" />
+             </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="tbRowAddress" prefWidth="154.40003967285156" text="Adres">
+           <cellValueFactory>
+              <PropertyValueFactory property="address" />
+           </cellValueFactory>
+        </TableColumn>
+            <TableColumn fx:id="tbRowDate" prefWidth="99.99993896484375" text="Data">
+               <cellValueFactory>
+                  <PropertyValueFactory property="date" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="tbRowToPickup" prefWidth="95.20001220703125" text="Nadano">
+               <cellValueFactory>
+                  <PropertyValueFactory property="send" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="tbRowPickedup" prefWidth="80.79998779296875" text="Podjęto">
+           <cellValueFactory>
+              <PropertyValueFactory property="pickupCourier" />
+           </cellValueFactory>
+        </TableColumn>
+            <TableColumn fx:id="tbRowToPickupClient" prefWidth="105.5999755859375" text="Do odbioru">
+               <cellValueFactory>
+                  <PropertyValueFactory property="readyToPickup" />
+               </cellValueFactory>
+            </TableColumn>
+           <TableColumn fx:id="tbRowPickedupClient" prefWidth="107.20001220703125" text="Odebrane">
+              <cellValueFactory>
+                 <PropertyValueFactory property="pickedup" />
+              </cellValueFactory>
+           </TableColumn>
+            <TableColumn fx:id="tbRowMissed" prefWidth="104.800048828125" text="Nieodebrane">
+               <cellValueFactory>
+                  <PropertyValueFactory property="missed" />
+               </cellValueFactory>
+            </TableColumn>
         </columns>
          <BorderPane.margin>
             <Insets right="10.0" top="10.0" />

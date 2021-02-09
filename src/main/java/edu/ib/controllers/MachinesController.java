@@ -69,6 +69,9 @@ public class MachinesController {
     private TableColumn<Machine, Integer> tbRowMissed;
 
     @FXML
+    private TableColumn<Machine, Integer> tbRowPickedupClient;
+
+    @FXML
     private TextField etxtSearchID;
 
     @FXML

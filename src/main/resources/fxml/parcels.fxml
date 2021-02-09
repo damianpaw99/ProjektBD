@@ -13,6 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.ParcelsController">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -80,10 +81,26 @@
    <center>
       <TableView fx:id="tbParcels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tbRowSender" prefWidth="215.0" text="Login klienta" />
-          <TableColumn fx:id="tbRowParcelId" prefWidth="130.0" text="Id paczki" />
-            <TableColumn fx:id="tbRowDate" prefWidth="260.0" text="Data statusu" />
-            <TableColumn fx:id="tbRowState" prefWidth="180.0" text="Status" />
+          <TableColumn fx:id="tbRowSender" prefWidth="215.0" text="Login klienta" >
+             <cellValueFactory>
+                <PropertyValueFactory property="clientLogin" />
+             </cellValueFactory>
+          </TableColumn>
+          <TableColumn fx:id="tbRowParcelId" prefWidth="130.0" text="Id paczki" >
+             <cellValueFactory>
+                <PropertyValueFactory property="parcelId" />
+             </cellValueFactory>
+          </TableColumn>
+            <TableColumn fx:id="tbRowDate" prefWidth="260.0" text="Data statusu" >
+               <cellValueFactory>
+                  <PropertyValueFactory property="date" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="tbRowState" prefWidth="180.0" text="Status" >
+               <cellValueFactory>
+                  <PropertyValueFactory property="state" />
+               </cellValueFactory>
+            </TableColumn>
         </columns>
          <BorderPane.margin>
             <Insets right="10.0" top="10.0" />

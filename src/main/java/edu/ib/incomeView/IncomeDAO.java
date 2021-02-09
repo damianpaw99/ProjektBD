@@ -39,7 +39,7 @@ public class IncomeDAO {
         while (rs.next()) {
             Income parcelAdministrator = new Income();
             parcelAdministrator.setIncome(rs.getDouble("Income"));
-            parcelAdministrator.setDate(rs.getDate("Date").toString());
+            parcelAdministrator.setDate(rs.getString("Date"));
             incomeObservableList.add(parcelAdministrator);
         }
         return incomeObservableList;
