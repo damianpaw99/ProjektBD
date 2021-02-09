@@ -35,7 +35,7 @@ public class MachinesController {
     private Button btnLogout;
 
     @FXML
-    private TableView tbMachine;
+    private TableView<?> tbMachine;
 
     @FXML
     private TableColumn<?, ?> tbRowID;
@@ -59,7 +59,10 @@ public class MachinesController {
     private TableColumn<?, ?> tbRowMissed;
 
     @FXML
-    private TextField etxtSearch;
+    private TextField etxtSearchID;
+
+    @FXML
+    private TextField etxtSearchDate;
 
     @FXML
     void back(ActionEvent event) {
@@ -96,7 +99,8 @@ public class MachinesController {
         assert tbRowPickedup != null : "fx:id=\"tbRowPickedup\" was not injected: check your FXML file 'machines.fxml'.";
         assert tbRowToPickupClient != null : "fx:id=\"tbRowToPickupClient\" was not injected: check your FXML file 'machines.fxml'.";
         assert tbRowMissed != null : "fx:id=\"tbRowMissed\" was not injected: check your FXML file 'machines.fxml'.";
-        assert etxtSearch != null : "fx:id=\"etxtSearch\" was not injected: check your FXML file 'machines.fxml'.";
+        assert etxtSearchID != null : "fx:id=\"etxtSearchID\" was not injected: check your FXML file 'machines.fxml'.";
+        assert etxtSearchDate != null : "fx:id=\"etxtSearchDate\" was not injected: check your FXML file 'machines.fxml'.";
 
     }
 }
