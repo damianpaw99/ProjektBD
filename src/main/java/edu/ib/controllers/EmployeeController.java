@@ -152,7 +152,7 @@ public class EmployeeController {
     void back(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/main_menu.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/administrator_menu.fxml"));
             doLogout();
             stage.setScene(new Scene(root, 1000, 800));
         } catch (Exception e) {

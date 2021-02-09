@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * Class used to get data from database from parcels_history view
  */
-public class ParcelAdministratorDAO {
+public class ParcelAdministratorDAO{
     /**
      * Object used to connect to database
      */
@@ -51,7 +51,7 @@ public class ParcelAdministratorDAO {
     /**
      * Method connecting to database using DBUtil object and getting all data
      *
-     * @return All parcels from machine_senders_view from database for logged in user (in Logger class object)
+     * @return All parcels from parcels_history from database
      * @throws SQLException                Thrown, when there was a problem with database
      */
     public ObservableList<ParcelAdministrator> showAllParcels() throws ClassNotFoundException, SQLException{

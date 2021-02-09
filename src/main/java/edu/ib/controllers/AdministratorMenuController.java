@@ -55,17 +55,35 @@ public class AdministratorMenuController {
 
     @FXML
     void income(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/income.fxml"));
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML
     void machines(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/machines.fxml"));
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML
     void parcels(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/parcels.fxml"));
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML

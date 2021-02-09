@@ -1,17 +1,25 @@
 package edu.ib.controllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import edu.ib.DBUtil;
 import edu.ib.parcelAdministrator.ParcelAdministrator;
+import edu.ib.parcelAdministrator.ParcelAdministratorDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class ParcelsController {
 
@@ -54,24 +62,71 @@ public class ParcelsController {
     @FXML
     private TextField etxtSearch;
 
+    private DBUtil dbUtil;
+
     @FXML
     void back(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/administrator_menu.fxml"));
+            logout(event);
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void login(ActionEvent event) {
+        try {
+            dbUtil = new DBUtil(etxtLogin.getText(), etxtPassword.getText());
+            dbUtil.dbConnect();
+            dbUtil.dbDisconnect();
+            btnLogin.setDisable(true);
+            btnlogout.setDisable(false);
+            etxtSearch.setDisable(false);
+            ParcelAdministratorDAO parcelAdministratorDAO=new ParcelAdministratorDAO(dbUtil);
+            try{
+                tbParcels.setItems(parcelAdministratorDAO.showAllParcels());
+            } catch (SQLException throwables) {
+                txtMessage.setText("Błąd bazy danych");
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException throwables) {
+            txtMessage.setText("Nieprawidłowy login lub hasło");
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @FXML
     void logout(ActionEvent event) {
-
+        tbParcels.getItems().clear();
+        dbUtil=null;
+        btnLogin.setDisable(false);
+        btnlogout.setDisable(true);
+        etxtSearch.setText("");
+        etxtSearch.setDisable(true);
     }
 
     @FXML
     void search(ActionEvent event) {
-
+        try {
+            ParcelAdministratorDAO parcelAdministratorDAO = new ParcelAdministratorDAO(dbUtil);
+            if (etxtSearch.getText().isEmpty()) {
+                tbParcels.setItems(parcelAdministratorDAO.showAllParcels());
+            } else {
+                tbParcels.setItems(parcelAdministratorDAO.searchParcel(etxtSearch.getText()));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

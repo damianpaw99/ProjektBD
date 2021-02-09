@@ -1,15 +1,25 @@
 package edu.ib.controllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import edu.ib.DBUtil;
+import edu.ib.machineStats.Machine;
+import edu.ib.machineStats.MachineDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class MachinesController {
 
@@ -35,28 +45,28 @@ public class MachinesController {
     private Button btnLogout;
 
     @FXML
-    private TableView<?> tbMachine;
+    private TableView tbMachine;
 
     @FXML
-    private TableColumn<?, ?> tbRowID;
+    private TableColumn<Machine, Integer> tbRowID;
 
     @FXML
-    private TableColumn<?, ?> tbRowAddress;
+    private TableColumn<Machine, String> tbRowAddress;
 
     @FXML
-    private TableColumn<?, ?> tbRowDate;
+    private TableColumn<Machine, String> tbRowDate;
 
     @FXML
-    private TableColumn<?, ?> tbRowToPickup;
+    private TableColumn<Machine, Integer> tbRowToPickup;
 
     @FXML
-    private TableColumn<?, ?> tbRowPickedup;
+    private TableColumn<Machine, Integer> tbRowPickedup;
 
     @FXML
-    private TableColumn<?, ?> tbRowToPickupClient;
+    private TableColumn<Machine, Integer> tbRowToPickupClient;
 
     @FXML
-    private TableColumn<?, ?> tbRowMissed;
+    private TableColumn<Machine, Integer> tbRowMissed;
 
     @FXML
     private TextField etxtSearchID;
@@ -64,24 +74,73 @@ public class MachinesController {
     @FXML
     private TextField etxtSearchDate;
 
+    private DBUtil dbUtil;
+
     @FXML
     void back(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fxml/administrator_menu.fxml"));
+            logout(event);
+            stage.setScene(new Scene(root, 1000, 800));
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
     }
 
     @FXML
     void login(ActionEvent event) {
+        try {
+            dbUtil = new DBUtil(etxtLogin.getText(), etxtPassword.getText());
+            dbUtil.dbConnect();
+            dbUtil.dbDisconnect();
+            btnLogin.setDisable(true);
+            btnLogout.setDisable(false);
+            etxtSearchDate.setDisable(false);
+            etxtSearchID.setDisable(false);
+            MachineDAO machineDAO=new MachineDAO(dbUtil);
 
+            try{
+                tbMachine.setItems(machineDAO.showAllMachines());
+            } catch (SQLException throwables) {
+                etxtMessage.setText("Błąd bazy danych");
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            etxtMessage.setText("Zalogowano pomyślnie");
+        } catch (SQLException throwables) {
+            etxtMessage.setText("Nieprawidłowy login lub hasło");
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void logout(ActionEvent event) {
-
+        btnLogin.setDisable(false);
+        btnLogout.setDisable(true);
+        etxtSearchDate.setDisable(true);
+        etxtSearchID.setDisable(true);
+        etxtSearchDate.setText("");
+        etxtSearchID.setText("");
     }
 
     @FXML
     void search(ActionEvent event) {
-
+        try {
+            MachineDAO machineDAO = new MachineDAO(dbUtil);
+            if (etxtSearchDate.getText().isEmpty() && etxtSearchID.getText().isEmpty()) {
+                tbMachine.setItems(machineDAO.showAllMachines());
+            } else {
+                tbMachine.setItems(machineDAO.searchMachine(etxtSearchDate.getText(),etxtSearchID.getText()));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
