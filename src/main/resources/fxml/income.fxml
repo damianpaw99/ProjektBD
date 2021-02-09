@@ -1,37 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.IncomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #7987cb;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.ib.controllers.IncomeController">
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField fx:id="etxtLogin" />
-            <PasswordField fx:id="etxtPassword" />
-            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="Zaloguj" />
-            <Button fx:id="btnLogout" mnemonicParsing="false" onAction="#logout" text="Wyloguj" />
-            <Button mnemonicParsing="false" onAction="#back" text="Powrót" />
+            <TextField fx:id="etxtLogin" promptText="Login">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </VBox.margin></TextField>
+            <PasswordField fx:id="etxtPassword" promptText="Hasło">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </VBox.margin></PasswordField>
+            <Text fx:id="txtMessage" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Candara" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin></Text>
+            <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" prefWidth="180.0" style="-fx-background-color: #000000;" text="Zaloguj" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#back" prefWidth="180.0" style="-fx-background-color: #000000;" text="Powrót" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="530.0" />
+               </VBox.margin></Button>
+            <Button fx:id="btnLogout" disable="true" mnemonicParsing="false" onAction="#logout" prefWidth="180.0" style="-fx-background-color: #000000;" text="Wyloguj" textFill="#9fa8da">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
          </children>
       </VBox>
    </left>
    <center>
-      <TableView fx:id="tbIncome" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tbIncome" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tbRowDate" prefWidth="75.0" text="Data" />
-          <TableColumn fx:id="tbRowIncome" prefWidth="75.0" text="Przychód" />
+          <TableColumn fx:id="tbRowDate" prefWidth="395.0" text="Data" />
+          <TableColumn fx:id="tbRowIncome" prefWidth="395.0" text="Przychód" />
         </columns>
+         <BorderPane.margin>
+            <Insets right="10.0" top="10.0" />
+         </BorderPane.margin>
       </TableView>
    </center>
    <bottom>
-      <TextField fx:id="etxtSearch" onAction="#search" promptText="Wyszukaj datę" BorderPane.alignment="CENTER" />
+      <TextField fx:id="etxtSearch" onAction="#search" promptText="Wyszukaj datę" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Candara" size="18.0" />
+         </font>
+         <effect>
+            <InnerShadow choke="0.2" color="#9fa8da" height="35.0" radius="18.25" width="40.0" />
+         </effect>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+         </BorderPane.margin></TextField>
    </bottom>
 </BorderPane>
