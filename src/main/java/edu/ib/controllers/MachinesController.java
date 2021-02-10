@@ -21,6 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * class that handles machines statistics screen (machines.fxml)
+ */
 public class MachinesController {
 
     @FXML
@@ -29,56 +32,112 @@ public class MachinesController {
     @FXML
     private URL location;
 
+    /**
+     * editable text field to enter login
+     */
     @FXML
     private TextField etxtLogin;
 
+    /**
+     * editable text field to enter password
+     */
     @FXML
     private PasswordField etxtPassword;
 
+    /**
+     * text field with information about success or failure of acion
+     */
     @FXML
     private Text etxtMessage;
 
+    /**
+     * login button
+     */
     @FXML
     private Button btnLogin;
 
+    /**
+     * logout button
+     */
     @FXML
     private Button btnLogout;
 
+    /**
+     * table with statistics of machines
+     */
     @FXML
     private TableView tbMachine;
 
+    /**
+     * column with machine ID
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowID;
 
+    /**
+     * column with machine address
+     */
     @FXML
     private TableColumn<Machine, String> tbRowAddress;
 
+    /**
+     * column with date
+     */
     @FXML
     private TableColumn<Machine, String> tbRowDate;
 
+    /**
+     * column with the sum of sent parcels with the ID of this machine on a given day
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowToPickup;
 
+    /**
+     * column with the sum of parcels picked up from this parcel locker on a given day
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowPickedup;
 
+    /**
+     * column with the sum of parcels to pickup from this machine on a given day
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowToPickupClient;
 
+    /**
+     * column with the sum of parcels picked up by courier (missed by addressee) from this machine on a given day
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowMissed;
 
+    /**
+     * column with the sum of parcels picked up by addressee from this machine on a given day
+     */
     @FXML
     private TableColumn<Machine, Integer> tbRowPickedupClient;
 
+    /**
+     * editable text field to search machine stats by ID
+     */
     @FXML
     private TextField etxtSearchID;
 
+    /**
+     * editable text field to machine stats by date
+     */
     @FXML
     private TextField etxtSearchDate;
 
+    /**
+     * object used to connect to database
+     */
     private DBUtil dbUtil;
 
+    /**
+     * method of returning to previous screen
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -91,6 +150,11 @@ public class MachinesController {
         }
     }
 
+    /**
+     * login method
+     *
+     * @param event information about event
+     */
     @FXML
     void login(ActionEvent event) {
         try {
@@ -101,9 +165,9 @@ public class MachinesController {
             btnLogout.setDisable(false);
             etxtSearchDate.setDisable(false);
             etxtSearchID.setDisable(false);
-            MachineDAO machineDAO=new MachineDAO(dbUtil);
+            MachineDAO machineDAO = new MachineDAO(dbUtil);
 
-            try{
+            try {
                 tbMachine.setItems(machineDAO.showAllMachines());
             } catch (SQLException throwables) {
                 etxtMessage.setText("Błąd bazy danych");
@@ -120,6 +184,11 @@ public class MachinesController {
         }
     }
 
+    /**
+     * logout method
+     *
+     * @param event information about event
+     */
     @FXML
     void logout(ActionEvent event) {
         btnLogin.setDisable(false);
@@ -130,6 +199,11 @@ public class MachinesController {
         etxtSearchID.setText("");
     }
 
+    /**
+     * method of seatching machine
+     *
+     * @param event information about event
+     */
     @FXML
     void search(ActionEvent event) {
         try {
@@ -137,7 +211,7 @@ public class MachinesController {
             if (etxtSearchDate.getText().isEmpty() && etxtSearchID.getText().isEmpty()) {
                 tbMachine.setItems(machineDAO.showAllMachines());
             } else {
-                tbMachine.setItems(machineDAO.searchMachine(etxtSearchDate.getText(),etxtSearchID.getText()));
+                tbMachine.setItems(machineDAO.searchMachine(etxtSearchDate.getText(), etxtSearchID.getText()));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -146,6 +220,9 @@ public class MachinesController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert etxtLogin != null : "fx:id=\"etxtLogin\" was not injected: check your FXML file 'machines.fxml'.";

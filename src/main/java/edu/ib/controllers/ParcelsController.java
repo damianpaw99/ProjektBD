@@ -21,6 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * class that handles parcels history screen (parcels.fxml)
+ */
 public class ParcelsController {
 
     @FXML
@@ -29,41 +32,82 @@ public class ParcelsController {
     @FXML
     private URL location;
 
+    /**
+     * editable text field to enter login
+     */
     @FXML
     private TextField etxtLogin;
 
+    /**
+     * editable text field to enter password
+     */
     @FXML
     private PasswordField etxtPassword;
 
+    /**
+     * text field with information about success or failure of acion
+     */
     @FXML
     private Text txtMessage;
 
+    /**
+     * login button
+     */
     @FXML
     private Button btnLogin;
 
+    /**
+     * logout button
+     */
     @FXML
     private Button btnlogout;
 
+    /**
+     * table with history of all shipped parcels
+     */
     @FXML
     private TableView tbParcels;
 
+    /**
+     * column with sender ID
+     */
     @FXML
     private TableColumn<ParcelAdministrator, String> tbRowSender;
 
+    /**
+     * column with parcel ID
+     */
     @FXML
     private TableColumn<ParcelAdministrator, Integer> tbRowParcelId;
 
+    /**
+     * column with state date
+     */
     @FXML
     private TableColumn<ParcelAdministrator, String> tbRowDate;
 
+    /**
+     * column with state
+     */
     @FXML
     private TableColumn<ParcelAdministrator, String> tbRowState;
 
+    /**
+     * editable text field to search parcel
+     */
     @FXML
     private TextField etxtSearch;
 
+    /**
+     * object used to connect to database
+     */
     private DBUtil dbUtil;
 
+    /**
+     * method of returning to previous screen
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -76,6 +120,11 @@ public class ParcelsController {
         }
     }
 
+    /**
+     * login method
+     *
+     * @param event information about event
+     */
     @FXML
     void login(ActionEvent event) {
         try {
@@ -85,8 +134,8 @@ public class ParcelsController {
             btnLogin.setDisable(true);
             btnlogout.setDisable(false);
             etxtSearch.setDisable(false);
-            ParcelAdministratorDAO parcelAdministratorDAO=new ParcelAdministratorDAO(dbUtil);
-            try{
+            ParcelAdministratorDAO parcelAdministratorDAO = new ParcelAdministratorDAO(dbUtil);
+            try {
                 tbParcels.setItems(parcelAdministratorDAO.showAllParcels());
             } catch (SQLException throwables) {
                 txtMessage.setText("Błąd bazy danych");
@@ -103,16 +152,26 @@ public class ParcelsController {
 
     }
 
+    /**
+     * logout method
+     *
+     * @param event information about event
+     */
     @FXML
     void logout(ActionEvent event) {
         tbParcels.getItems().clear();
-        dbUtil=null;
+        dbUtil = null;
         btnLogin.setDisable(false);
         btnlogout.setDisable(true);
         etxtSearch.setText("");
         etxtSearch.setDisable(true);
     }
 
+    /**
+     * method of seatching shipped parcel
+     *
+     * @param event information about event
+     */
     @FXML
     void search(ActionEvent event) {
         try {
@@ -129,6 +188,9 @@ public class ParcelsController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert etxtLogin != null : "fx:id=\"etxtLogin\" was not injected: check your FXML file 'parcels.fxml'.";

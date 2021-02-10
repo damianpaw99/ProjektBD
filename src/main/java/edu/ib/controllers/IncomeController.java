@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import edu.ib.DBUtil;
 import edu.ib.incomeView.Income;
 import edu.ib.incomeView.IncomeDAO;
-import edu.ib.machineStats.MachineDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +21,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+/**
+ * class that handles income informations screen (income.fxml)
+ */
 public class IncomeController {
 
     @FXML
@@ -30,35 +32,70 @@ public class IncomeController {
     @FXML
     private URL location;
 
+    /**
+     * editable text field to enter login
+     */
     @FXML
     private TextField etxtLogin;
 
+    /**
+     * editable text field to enter password
+     */
     @FXML
     private PasswordField etxtPassword;
 
+    /**
+     * text field with information about success or failure of acion
+     */
     @FXML
     private Text txtMessage;
 
+    /**
+     * login button
+     */
     @FXML
     private Button btnLogin;
 
+    /**
+     * logout button
+     */
     @FXML
     private Button btnLogout;
 
+    /**
+     * table with history of income
+     */
     @FXML
     private TableView tbIncome;
 
+    /**
+     * column with date of income
+     */
     @FXML
     private TableColumn<Income, String> tbRowDate;
 
+    /**
+     * column with income during the day
+     */
     @FXML
     private TableColumn<Income, Double> tbRowIncome;
 
+    /**
+     * editable text field to search date
+     */
     @FXML
     private TextField etxtSearch;
 
+    /**
+     * object used to connect to database
+     */
     private DBUtil dbUtil;
 
+    /**
+     * method of returning to previous screen
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -71,6 +108,11 @@ public class IncomeController {
         }
     }
 
+    /**
+     * login method
+     *
+     * @param event information about event
+     */
     @FXML
     void login(ActionEvent event) {
         try {
@@ -80,9 +122,9 @@ public class IncomeController {
             btnLogin.setDisable(true);
             btnLogout.setDisable(false);
             etxtSearch.setDisable(false);
-            IncomeDAO incomeDAO=new IncomeDAO(dbUtil);
+            IncomeDAO incomeDAO = new IncomeDAO(dbUtil);
 
-            try{
+            try {
                 tbIncome.setItems(incomeDAO.showAllIncome());
             } catch (SQLException throwables) {
                 txtMessage.setText("Błąd bazy danych");
@@ -99,19 +141,32 @@ public class IncomeController {
         }
     }
 
+    /**
+     * logout method
+     *
+     * @param event information about event
+     */
     @FXML
     void logout(ActionEvent event) {
-        dbUtil=null;
+        dbUtil = null;
         btnLogin.setDisable(false);
         btnLogout.setDisable(true);
         etxtSearch.setDisable(true);
     }
 
+    /**
+     * method of seatching income for the day
+     *
+     * @param event information about event
+     */
     @FXML
     void search(ActionEvent event) {
 
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert etxtLogin != null : "fx:id=\"etxtLogin\" was not injected: check your FXML file 'income.fxml'.";

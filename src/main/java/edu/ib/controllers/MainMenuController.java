@@ -30,10 +30,10 @@ public class MainMenuController {
     private Button btnNewClient;
 
     /**
-     * button to go to new employee creation screen
+     * button to go to administrator menu screen
      */
     @FXML
-    private Button btnNewEmployee;
+    private Button btnAdministrator;
 
     /**
      * button to go to customer login screen
@@ -54,7 +54,7 @@ public class MainMenuController {
     private Button btnGetParcel;
 
     /**
-     * method to go to new employee creation screen
+     * method to go to administrator menu screen
      *
      * @param event information about event
      */
@@ -139,7 +139,7 @@ public class MainMenuController {
     @FXML
     void initialize() {
         assert btnNewClient != null : "fx:id=\"btnNewClient\" was not injected: check your FXML file 'main_menu.fxml'.";
-        assert btnNewEmployee != null : "fx:id=\"btnNewEmployee\" was not injected: check your FXML file 'main_menu.fxml'.";
+        assert btnAdministrator != null : "fx:id=\"btnNewEmployee\" was not injected: check your FXML file 'main_menu.fxml'.";
         assert btnLogClient != null : "fx:id=\"btnLogClient\" was not injected: check your FXML file 'main_menu.fxml'.";
         assert btnLogEmployee != null : "fx:id=\"btnLogEmployee\" was not injected: check your FXML file 'main_menu.fxml'.";
         assert btnGetParcel != null : "fx:id=\"btnGetParcel\" was not injected: check your FXML file 'main_menu.fxml'.";

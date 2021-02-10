@@ -2,6 +2,7 @@ package edu.ib.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+ * class that handles administrator menu screen (administrator_menu.fxml)
+ */
 public class AdministratorMenuController {
 
     @FXML
@@ -19,18 +23,35 @@ public class AdministratorMenuController {
     @FXML
     private URL location;
 
+    /**
+     * button to go to new employee creation screen
+     */
     @FXML
     private Button btnAddEmployee;
 
+    /**
+     * button to go to all parcels history screen
+     */
     @FXML
     private Button btnParcels;
 
+    /**
+     * button to go to income informations screen
+     */
     @FXML
     private Button btnIncome;
 
+    /**
+     * button to go to machines statistics screen
+     */
     @FXML
     private Button btnMachines;
 
+    /**
+     * method to go to new employee creation screen
+     *
+     * @param event information about event
+     */
     @FXML
     void addEmployee(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -42,6 +63,11 @@ public class AdministratorMenuController {
         }
     }
 
+    /**
+     * method of returning to home screen
+     *
+     * @param event information about event
+     */
     @FXML
     void back(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -53,6 +79,11 @@ public class AdministratorMenuController {
         }
     }
 
+    /**
+     * method to go to income informations screen
+     *
+     * @param event information about event
+     */
     @FXML
     void income(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -64,6 +95,11 @@ public class AdministratorMenuController {
         }
     }
 
+    /**
+     * method to go to machines statistics screen
+     *
+     * @param event information about event
+     */
     @FXML
     void machines(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -75,6 +111,11 @@ public class AdministratorMenuController {
         }
     }
 
+    /**
+     * method to go to parcels history screen
+     *
+     * @param event information about event
+     */
     @FXML
     void parcels(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -86,6 +127,9 @@ public class AdministratorMenuController {
         }
     }
 
+    /**
+     * method called when loading screen
+     */
     @FXML
     void initialize() {
         assert btnAddEmployee != null : "fx:id=\"btnAddEmployee\" was not injected: check your FXML file 'administrator_menu.fxml'.";

@@ -144,7 +144,7 @@ public class EmployeeController {
     private ParcelCourierDAO parcelCourierDAO;
 
     /**
-     * method of returning to home screen
+     * method of returning to previous screen
      *
      * @param event information about event
      */
