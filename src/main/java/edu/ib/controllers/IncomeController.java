@@ -22,7 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
- * class that handles income informations screen (income.fxml)
+ * class that handles income information screen (income.fxml)
  */
 public class IncomeController {
 
