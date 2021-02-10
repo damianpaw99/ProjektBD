@@ -161,7 +161,18 @@ public class IncomeController {
      */
     @FXML
     void search(ActionEvent event) {
-
+        IncomeDAO incomeDAO = new IncomeDAO(dbUtil);
+        try {
+            if (etxtSearch.getText().isEmpty()) {
+                tbIncome.setItems(incomeDAO.showAllIncome());
+            } else {
+                tbIncome.setItems(incomeDAO.searchIncome(etxtSearch.getText()));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
