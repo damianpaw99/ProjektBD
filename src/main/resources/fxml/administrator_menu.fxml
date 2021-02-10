@@ -21,7 +21,7 @@
                <font>
                   <Font name="Candara" size="18.0" />
                </font></Button>
-            <Button fx:id="btnParcels" mnemonicParsing="false" onAction="#parcels" prefWidth="300.0" style="-fx-background-color: #000000;" text="Wykaz paczek" textFill="#9fa8da">
+            <Button fx:id="btnParcels" mnemonicParsing="false" onAction="#parcels" prefWidth="300.0" style="-fx-background-color: #000000;" text="Wykaz przesyłek" textFill="#9fa8da">
                <effect>
                   <DropShadow />
                </effect>
@@ -41,7 +41,7 @@
                <font>
                   <Font name="Candara" size="18.0" />
                </font></Button>
-            <Button fx:id="btnMachines" mnemonicParsing="false" onAction="#machines" prefWidth="300.0" style="-fx-background-color: #000000;" text="Paczkomaty" textFill="#9fa8da">
+            <Button fx:id="btnMachines" mnemonicParsing="false" onAction="#machines" prefWidth="300.0" style="-fx-background-color: #000000;" text="Automaty paczkowe" textFill="#9fa8da">
                <effect>
                   <DropShadow />
                </effect>

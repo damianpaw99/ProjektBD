@@ -95,7 +95,7 @@
    <center>
       <TableView fx:id="tbParcel" editable="true" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="790.0" style="-fx-background-color: #9fa8da;" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn fx:id="tbRowID" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="ID">
+          <TableColumn fx:id="tbRowID" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="ID przesyłki">
              <cellValueFactory>
                 <PropertyValueFactory property="parcelId" />
              </cellValueFactory>
